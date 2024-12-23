@@ -9,7 +9,7 @@
 
 .main-header .logo a {
   text-decoration: none;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--ff-secondary);
   font-size: 1.8rem; 
   color: var(--brand-color); 
   font-weight: bold;
