@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+:root {
+  --text-color: #d4d4d8;
+  --brand-color: #7d5ba6;
+  --link-hover: #55357b;
+  --text-color-secondary: #9e9e9e;
+  --bg-color: #10101f;
+  --bg-color-secondary: #202034;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.container {
+  margin-inline: 5rem;
+}
+
+ul {
+  list-style: none;
+  text-decoration: none;
+}
