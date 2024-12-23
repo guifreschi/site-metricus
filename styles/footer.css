@@ -1,0 +1,132 @@
+.main-footer {
+  background-color: var(--bg-color-tertiary);
+  color: var(--text-color);
+  padding: 2rem 0;
+  font-family: 'Inter', sans-serif;
+  margin-top: 5rem;
+
+  & .footer-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    & > div {
+      margin: 1rem;
+      min-width: 18.75rem;
+      transition: transform 0.3s ease, 0.3s ease;
+      will-change: transform;
+    }
+  }
+
+  & .footer-links {
+    text-align: left;
+
+    h3 {
+      margin-bottom: 1.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--heading-color);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 1rem;
+
+        a {
+          color: #ecf0f1;
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: var(--link-hover);
+          }
+        }
+      }
+    }
+  }
+
+  & .footer-contact {
+    text-align: left;
+
+    h3 {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--heading-color);
+    }
+
+    p {
+      margin: 1rem 0;
+      font-size: 1rem;
+      line-height: 1.6;
+
+      & a {
+        color: #ecf0f1;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--link-hover);
+        }
+      }
+    }
+
+    #social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+
+      a {
+        color: #ecf0f1;
+        font-size: 2rem;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  & .footer-bottom {
+    text-align: center;
+    flex-direction: column-reverse;
+    border-top: 1px solid #34495e;
+    padding-top: 1rem;
+    font-size: 1rem;
+    margin-top: 2rem;
+    color: var(--footer-text-color);
+  }
+}
+
+@media (max-width: 79.8em) {
+  .main-footer .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-footer .footer-bottom {
+    flex-direction: column;
+  }
+
+  .footer-container > div {
+    min-width: 100%;
+    margin: 1rem 0;
+  }
+}
