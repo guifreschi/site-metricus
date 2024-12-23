@@ -11,7 +11,8 @@
   --link-hover: #55357b;
   --text-color-secondary: #9e9e9e;
   --bg-color: #10101f;
-  --bg-color-secondary: #202034;
+  --bg-color-secondary: #18181f;
+  --bg-color-tertiary: #1f1f2d;
 }
 
 body {
@@ -20,7 +21,7 @@ body {
 }
 
 .container {
-  margin-inline: 5rem;
+  margin-inline: 8rem;
 }
 
 ul {

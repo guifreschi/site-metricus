@@ -1,8 +1,18 @@
 #home {
+  display: grid;
+  grid-template-areas: 
+  "a a"
+  "b c"
+  ;
+  grid-template-rows: auto auto;
+  grid-template-columns: 50%;
+  gap: 2rem;
   & h1 {
+    /* border: 1px solid red; */
     text-align: center;
     margin-top: 2rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    grid-area: a;
     margin-bottom: 2rem;
 
     & .animated-text {
@@ -17,19 +27,21 @@
     }
   }
 
-  & #infos { 
-    width: 22rem;
-    & p:nth-of-type(1) {
-    font-size: 0.75rem;
-    color: var(--text-color-secondary);
-    font-weight: 500;
-    }
+    & #infos { 
+      grid-area: b;
+  
+      & p:nth-of-type(1) {
+      font-size: 0.75rem;
+      color: var(--text-color-secondary);
+      font-weight: 500;
+      }
 
     & p:nth-of-type(2) {
       margin-top: 0.5rem;
       font-family: "Poppins", sans-serif;
       color: var(--text-color);
       font-size: 2.5rem;
+      text-transform: uppercase;
       font-weight: 500;
       line-height: 1.3; 
     }
@@ -38,19 +50,18 @@
       margin-top: 1.75rem;
       font-family: "Poppins", sans-serif;
       color: var(--brand-color);
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       font-weight: 500;
     }
 
     & ul {
       width: 14rem;
-      background-color: var(--bg-color-secondary);
       margin-top: 0.75rem;
       padding: 0;
       list-style-type: none;
       max-height: 8rem;
       overflow-y: auto;
-      border-radius: 8px;
+      border-radius: 12px;
       padding: .5rem;
 
       &::-webkit-scrollbar {
@@ -58,28 +69,75 @@
     }
     
     &::-webkit-scrollbar-thumb {
-        background-color: var(--link-hover);
+        background-color: var(--bg-color-tertiary);
         border-radius: 4px;
     }
     
     &::-webkit-scrollbar-track {
-        background-color: var(--brand-color);
+        background-color: var(--bg-color-secondary);
         border-radius: 4px;
     }
     
     &::-webkit-scrollbar-thumb:hover {
-        background-color: #302143;
+        background-color: #0b0b0c;
     }    
 
       & li {
         margin-bottom: .25rem;
         font-weight: 500;
         font-size: 1rem;
-        margin: .25rem 1rem;
+        margin: .25rem 0;
       }
     }
-    
   }
+
+  #start {
+    grid-area: c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 1px solid red; */
+
+    & h3 span {
+      background: linear-gradient(to right, var(--text-color), var(--text-color-secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.5rem;
+    }
+  
+    & p {
+      font-family: "Poppins", sans-serif;
+      margin-top: 1rem;
+      font-weight: 500;
+      font-size: 2rem;
+      max-width: 22rem;
+      background: linear-gradient(to right, var(--text-color), var(--brand-color));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.25rem;
+    }
+  
+    & button {
+      width: 12rem;
+      height: 5rem;
+      background: var(--brand-color);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: bold;
+      border: 2px solid var(--text-color);
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+  
+      &:hover {
+        transform: scale(1.1);
+        background-color: var(--link-hover);
+        border-color: var(--text-color-secondary);
+      }
+    }
+  }  
 }
 
 @keyframes changeColor {
