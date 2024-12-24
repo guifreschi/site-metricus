@@ -43,3 +43,9 @@ ul {
 img {
   width: 100%;
 }
+
+@media (max-width: 79.8em) {
+  html {
+    font-size: 85%;
+  }
+}

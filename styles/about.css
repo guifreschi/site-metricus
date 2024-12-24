@@ -161,3 +161,14 @@
     }    
   }
 }
+
+@media (max-width: 79.8em) {
+  #about {
+    margin-inline: 14rem;
+    grid-template-areas: 
+      "a"
+      "b";
+    grid-template-columns: 1fr; 
+    gap: 2rem;
+  }
+}
