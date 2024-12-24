@@ -38,7 +38,6 @@
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
-        font-size: 2rem;
       }
     }
 
@@ -164,11 +163,27 @@
 
 @media (max-width: 79.8em) {
   #about {
-    margin-inline: 18rem;
     grid-template-areas: 
       "a"
       "b";
     grid-template-columns: 1fr; 
     gap: 2rem;
+
+    & #metricus-info {
+      grid-area: a;
+      margin-bottom: 2rem;
+      & p:nth-of-type(1),
+      & p:nth-of-type(4), 
+      & p:nth-of-type(7) {
+        font-size: 1.75rem;
+      } 
+    }
+
+    & #creators {
+      grid-area: b;
+      & h3 {
+        font-size: 1.5rem;
+      }
+    }
   }
 }

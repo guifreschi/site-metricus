@@ -51,4 +51,7 @@ img {
   .container {
     margin-inline: 12rem;
   }
+  .container-secondary {
+    margin-inline: 12rem;
+  }
 }

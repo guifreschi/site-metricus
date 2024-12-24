@@ -5,32 +5,47 @@
   padding: 1rem 2rem; 
   background-color: #1e1e2f; 
   color: #e0e0e0; 
+
+  & .logo a {
+    text-decoration: none;
+    font-family: var(--ff-secondary);
+    font-size: 1.8rem; 
+    color: var(--brand-color); 
+    font-weight: bold;
+  }
+
+  & .nav-menu ul {
+    display: flex;
+    list-style: none;
+  }
+
+  & .nav-menu ul li {
+    margin: 0 1.5rem; 
+  }
+
+  & .nav-menu ul li a {
+    text-decoration: none;
+    color: #d1d1e9; 
+    font-size: 1rem; 
+    transition: color 0.3s;
+  }
+
+  & .nav-menu ul li a:hover {
+    color: var(--link-hover); 
+  }
 }
 
-.main-header .logo a {
-  text-decoration: none;
-  font-family: var(--ff-secondary);
-  font-size: 1.8rem; 
-  color: var(--brand-color); 
-  font-weight: bold;
-}
 
-.nav-menu ul {
-  display: flex;
-  list-style: none;
-}
-
-.nav-menu ul li {
-  margin: 0 1.5rem; 
-}
-
-.nav-menu ul li a {
-  text-decoration: none;
-  color: #d1d1e9; 
-  font-size: 1rem; 
-  transition: color 0.3s;
-}
-
-.nav-menu ul li a:hover {
-  color: var(--link-hover); 
+@media (max-width: 79.8em) {
+  .main-header {
+    & .logo {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    & .nav-menu {
+  
+      display: none;
+    }
+  }
+  
 }
