@@ -164,7 +164,7 @@
 
 @media (max-width: 79.8em) {
   #about {
-    margin-inline: 14rem;
+    margin-inline: 18rem;
     grid-template-areas: 
       "a"
       "b";

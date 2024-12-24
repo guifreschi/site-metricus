@@ -1,5 +1,4 @@
 #home {
-
   display: grid;
   grid-template-areas: 
   "a a"
@@ -150,6 +149,36 @@
   }
   100% {
     background-position: -100% 0; 
+  }
+}
+@media (max-width: 79.8em) {
+  #home {
+    display: flex;
+    flex-direction: column;
+    
+    & #start {
+      margin-top: 6rem;
+      display: flex;
+      align-items: center;
+    }
+
+    & #infos {
+      text-align: center;
+      margin-top: 2rem;
+      & p:nth-of-type(1) {
+        text-align: left;
+      }
+      & ul {
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto; 
+        margin-top: 2rem;
+        max-height: 12rem;
+        width: 14rem;
+        box-shadow: 0 0 20px 1px var(--bg-color-secondary);
+        padding: .75rem;
+      }
+    }
   }
 }
 
