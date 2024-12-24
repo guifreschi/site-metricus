@@ -1,5 +1,5 @@
 #about {
-  margin-top: 10rem;
+  margin-top: 8rem;
   display: grid;
   grid-template-areas: 
   "a b"
@@ -151,6 +151,13 @@
       border-radius: 12px;
       object-fit: cover;
       margin-bottom: 4rem;
+      transition: 0.2s;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--bg-color-secondary);
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }    
   }
 }
