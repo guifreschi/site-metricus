@@ -91,7 +91,7 @@
     }
   }
 
-  #start {
+  & #start {
     grid-area: c;
     display: flex;
     flex-direction: column;
@@ -150,25 +150,11 @@
 
 @media (max-width: 79.8em), (max-width: 48em) {
   #home {
+    margin: 0;
     display: flex;
     flex-direction: column;
-
-    & h1 {
-      font-size: 2.5rem;
-      width: 14rem;
-    }
-
-    & #start {
-      margin-top: 4rem;
-
-      & p {
-        font-size: 1.75rem;
-      }
-
-      & button {
-        width: 90%;
-      }
-    }
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
 
     & #infos {
       text-align: center;
@@ -176,11 +162,11 @@
       
       & p:nth-of-type(1) {
         text-align: left;
+        margin-left: .8rem;
       }
 
       & p:nth-of-type(2) {
         font-size: 2.25rem;
-        text-align: left;
       }
 
       & ul {
@@ -189,13 +175,22 @@
         margin-right: auto;
         margin-top: 2rem;
         max-height: 12rem;
-        width: 14rem;
-        box-shadow: 0 0 20px 1px var(--bg-color-secondary);
-        padding: 0.75rem;
-        width: 100%;
-        max-height: 10rem;
       }
     }
+
+    & #start {
+      margin-top: 2.5rem;
+      text-align: center;
+
+      & button {
+        margin-top: 1.5rem;
+        margin-right: auto;
+        margin-left: auto;
+        width: 80%;
+        height: 5.5rem;
+      }
+    }
+
   }
 }
 

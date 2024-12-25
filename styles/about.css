@@ -163,6 +163,10 @@
 
 @media (max-width: 79.8em) {
   #about {
+    margin: 0;
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
+    margin-top: 6rem;
     grid-template-areas: 
       "a"
       "b";
