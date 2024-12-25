@@ -11,8 +11,14 @@ if (localStorage.getItem('light-mode') === 'enabled') {
 }
 
 toggleButton.addEventListener('click', () => {
+  toggleButton.classList.add('rotate')
+
+  setTimeout(() => {
+    toggleButton.classList.remove('rotate')
+  }, 500)
+
   const lightModeEnabled = body.classList.toggle('light-mode')
-  
+
   if (lightModeEnabled) {
     localStorage.setItem('light-mode', 'enabled')
     toggleButton.src = 'assets/moon.svg'

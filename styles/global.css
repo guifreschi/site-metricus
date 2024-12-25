@@ -73,3 +73,11 @@ img {
   --scrollbar-thumb-hover: rgb(70, 70, 70);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+#light-mode-toggle {
+  transition: transform 0.5s ease;
+}
+
+#light-mode-toggle.rotate {
+  transform: rotate(360deg);
+}
