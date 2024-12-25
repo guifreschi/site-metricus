@@ -40,7 +40,7 @@
         margin-bottom: 1rem;
 
         a {
-          color: #ecf0f1;
+          color: var(--link-color);
           text-decoration: none;
           transition: color 0.3s ease;
 
@@ -68,7 +68,7 @@
       line-height: 1.6;
 
       & a {
-        color: #ecf0f1;
+        color: var(--text-color);
         text-decoration: none;
         transition: color 0.3s ease;
 
@@ -84,7 +84,7 @@
       margin-top: 1rem;
 
       a {
-        color: #ecf0f1;
+        color: var(--text-color);
         font-size: 2rem;
         transition: background-color 0.3s ease, transform 0.3s ease;
         width: 3rem;
@@ -129,4 +129,9 @@
     min-width: 100%;
     margin: 1rem 0;
   }
+}
+
+.light-mode .footer-contact #social-links a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
 }
