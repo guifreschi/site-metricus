@@ -1,0 +1,20 @@
+@import url(/styles/global.css);
+@import url(top.css);
+@import url(select.css);
+
+.container {
+  margin-inline: 10rem;
+}
+
+.container-secondary {
+  margin-inline: 5rem;
+}
+
+@media (max-width: 79.8em) {
+  .container {
+    margin-inline: 14rem;
+  }
+  .container-secondary {
+    margin-inline: 14rem;
+  }
+}

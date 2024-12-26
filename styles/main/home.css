@@ -64,6 +64,7 @@
       border-radius: 12px;
       padding: 0.5rem;
       box-shadow: 0 0 100px 1px var(--bg-color-secondary);
+      background-color: var(--bg-color-secondary);
 
       &::-webkit-scrollbar {
         width: 6px;

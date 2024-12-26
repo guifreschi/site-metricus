@@ -1,0 +1,17 @@
+#top {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+  & img {
+    height: 2.5rem;
+    width: 2.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.1)
+    }
+  }
+}
