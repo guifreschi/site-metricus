@@ -17,10 +17,10 @@ const simpleOperations = document.querySelectorAll('div .simple-operations')
 
 if (localStorage.getItem('light-mode') === 'enabled') {
   body.classList.add('light-mode')
-  toggleButton.src = 'assets/moon.svg'
+  toggleButton.src = '/static/assets/main-images/moon.svg' 
   toggleButton.alt = 'Dark Mode'
 } else {
-  toggleButton.src = 'assets/sun.svg'
+  toggleButton.src = '/static/assets/main-images/sun.svg' 
   toggleButton.alt = 'Light Mode'
 }
 
@@ -35,18 +35,27 @@ toggleButton.addEventListener('click', () => {
 
   if (lightModeEnabled) {
     localStorage.setItem('light-mode', 'enabled')
-    toggleButton.src = 'assets/moon.svg'
+    toggleButton.src = '/static/assets/main-images/moon.svg' 
     toggleButton.alt = 'Dark Mode'
   } else {
     localStorage.setItem('light-mode', 'disabled')
-    toggleButton.src = 'assets/sun.svg'
+    toggleButton.src = '/static/assets/main-images/sun.svg' 
     toggleButton.alt = 'Light Mode'
   }
 })
 
+const startButton = document.querySelector('#start button')
+
+startButton.onclick = (e) => {
+  e.preventDefault()
+  const baseURL = 'http://127.0.0.1:5000/'
+  console.log(`${baseURL}/conversion`)
+  window.location.href = `${baseURL}/conversion`
+}
+
 switchButton.onclick = () => {
   circle.classList.toggle('circle-animation')
-}
+} 
 
 function preventNegativeValues(event) {
   const input = event.target
@@ -68,6 +77,7 @@ selectSimple.forEach(item => {
     select.classList.add('display-none')
     complexOperations.forEach(operation => operation.classList.add('display-none'))
     simpleOperations.forEach(operation => operation.classList.remove('display-none'))
+    location.reload()
   }
 })
 
@@ -79,12 +89,14 @@ selectComplex.forEach(item => {
     select.classList.add('display-none')
     simpleOperations.forEach(operation => operation.classList.add('display-none'))
     complexOperations.forEach(operation => operation.classList.remove('display-none'))
+    location.reload()
   }
 })
 
 back.onclick = () => {
   calculator.classList.add('display-none')
   select.classList.remove('display-none')
+  location.reload()
 }
 
 calculateButton.onclick = (e) => {
@@ -95,4 +107,5 @@ calculateButton.onclick = (e) => {
     input.value = ""
   })
   inputs[0].focus()
+  location.reload()
 }

@@ -1,7 +1,7 @@
-@import url(/styles/global.css);
-@import url(top.css);
-@import url(select.css);
-@import url(calculator.css);
+@import url("global.css");
+@import url("top.css");
+@import url("select.css");
+@import url("calculator.css");
 
 .container {
   margin-inline: 10rem;
