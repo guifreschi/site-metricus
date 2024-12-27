@@ -72,6 +72,23 @@
       color: var(--text-color-secondary);
     }
 
+    & select {
+      all: unset;
+      background-color: var(--bg-color-tertiary);
+      padding: .5rem;
+      margin-top: .75rem;
+      border-radius: 8px;
+      outline: 1.5px solid var(--text-color-secondary);
+      transition: 0.3s;
+      cursor: pointer;
+  
+      &:hover,
+      &:focus {
+        background-color: var(--bg-color-secondary-scroll);
+        outline: 1.75px solid var(--link-color);
+      }
+    }
+
     & input {
       all: unset;
       background-color: var(--bg-color-tertiary);

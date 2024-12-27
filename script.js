@@ -12,6 +12,9 @@ const calculator = document.querySelector('#calculator')
 const calculateButton = document.querySelector('#calculate-operation')
 const result = document.querySelector('#result')
 
+const complexOperations = document.querySelectorAll('div .complex-operations')
+const simpleOperations = document.querySelectorAll('div .simple-operations')
+
 if (localStorage.getItem('light-mode') === 'enabled') {
   body.classList.add('light-mode')
   toggleButton.src = 'assets/moon.svg'
@@ -45,11 +48,37 @@ switchButton.onclick = () => {
   circle.classList.toggle('circle-animation')
 }
 
+function preventNegativeValues(event) {
+  const input = event.target
+  if (input.value < 0) {
+    input.value = ""
+    alert("The value cannot be negative.")
+  }
+}
+
+const inputFields = document.querySelectorAll('input[type="number"]')
+inputFields.forEach(input => {
+  input.addEventListener('input', preventNegativeValues)
+})
+
 selectSimple.forEach(item => {
   item.onclick = () => {
     unitInfo.textContent = item.id
     calculator.classList.remove('display-none')
     select.classList.add('display-none')
+    complexOperations.forEach(operation => operation.classList.add('display-none'))
+    simpleOperations.forEach(operation => operation.classList.remove('display-none'))
+  }
+})
+
+selectComplex.forEach(item => {
+  item.onclick = () => {
+    const unitName = item.id.replace('-', ' ')
+    unitInfo.textContent = unitName
+    calculator.classList.remove('display-none')
+    select.classList.add('display-none')
+    simpleOperations.forEach(operation => operation.classList.add('display-none'))
+    complexOperations.forEach(operation => operation.classList.remove('display-none'))
   }
 })
 
@@ -60,5 +89,10 @@ back.onclick = () => {
 
 calculateButton.onclick = (e) => {
   e.preventDefault()
+  const inputs = document.querySelectorAll('input')
   result.classList.remove('display-none')
+  inputs.forEach(input => {
+    input.value = ""
+  })
+  inputs[0].focus()
 }
