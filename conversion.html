@@ -16,7 +16,7 @@
       <h1>Metricus Conversions</h1>
       <img src="assets/sun.svg" alt="Light mode" id="light-mode-toggle">
     </section>
-    <section id="select" class="">
+    <section id="select">
       <h2>Units</h2>
       <p>Which unit do you want to use?</p>
       <div id="simple">
@@ -142,7 +142,7 @@
         </ul>        
       </div>
     </section>
-    <section id="calculator">
+    <section id="calculator" class="display-none">
       <div id="unit-info">
         <h2>Acceleration</h2>
         <div id="switch">
@@ -172,8 +172,12 @@
         <button id="calculate-operation">Calculate</button>
 
       </div>
-      <div id="result">
+      <div id="result" class="display-none">
         <p>The result is: <span>98.1 m/s&sup2;</span></p>
+      </div>
+
+      <div id="back">
+        <p>Back</span></p>
       </div>
     </section>
   </div>
