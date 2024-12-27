@@ -16,131 +16,164 @@
       <h1>Metricus Conversions</h1>
       <img src="assets/sun.svg" alt="Light mode" id="light-mode-toggle">
     </section>
-    <section id="select">
+    <section id="select" class="">
       <h2>Units</h2>
       <p>Which unit do you want to use?</p>
       <div id="simple">
         <ul>
-          <li>
+          <li id="acceleration">
             <div>
               <img src="assets/units/acceleration.svg" alt="Acceleration icon">
             </div>
             <p>Acceleration</p>
           </li>
-  
-          <li>
+        
+          <li id="area">
             <div>
               <img src="assets/units/area.svg" alt="Area icon">
             </div>
             <p>Area</p>
           </li>
-  
-          <li>
+        
+          <li id="electricity">
             <div>
               <img src="assets/units/electricity.svg" alt="Electricity icon">
             </div>
             <p>Electricity</p>
           </li>
-  
-          <li>
+        
+          <li id="energy">
             <div>
               <img src="assets/units/energy.svg" alt="Energy icon">
             </div>
             <p>Energy</p>
           </li>
-  
-          <li>
+        
+          <li id="force">
             <div>
               <img src="assets/units/force.svg" alt="Force icon">
             </div>
             <p>Force</p>
           </li>
-  
-          <li>
+        
+          <li id="length">
             <div>
               <img src="assets/units/length.svg" alt="Length icon">
             </div>
             <p>Length</p>
           </li>
-  
-          <li>
+        
+          <li id="mass">
             <div>
               <img src="assets/units/mass.svg" alt="Mass icon">
             </div>
             <p>Mass</p>
           </li>
-  
-          <li>
+        
+          <li id="pressure">
             <div>
               <img src="assets/units/pressure.svg" alt="Pressure icon">
             </div>
             <p>Pressure</p>
           </li>
-  
-          <li>
+        
+          <li id="speed">
             <div>
               <img src="assets/units/speed.svg" alt="Speed icon">
             </div>
             <p>Speed</p>
           </li>
-  
-          <li>
+        
+          <li id="temperature">
             <div>
               <img src="assets/units/temperature.svg" alt="Temperature icon">
             </div>
             <p>Temperature</p>
           </li>
-  
-          <li>
+        
+          <li id="time">
             <div>
               <img src="assets/units/time.svg" alt="Time icon">
             </div>
             <p>Time</p>
           </li>
-  
-          <li>
+        
+          <li id="volume">
             <div>
               <img src="assets/units/volume.svg" alt="Volume icon">
             </div>
             <p>Volume</p>
           </li>
         </ul>
+        
       </div>
 
       <div id="complex">
         <h3>Complex Conversions</h3>
         <p>Which one do you want to calculate?</p>
         <ul>
-
-          <li>
+          <li id="calculate-density">
             <div>
               <img src="assets/units/density.svg" alt="Calculate density">
             </div>
             <p>Density</p>
           </li>
-
-          <li>
+        
+          <li id="calculate-displacement">
             <div>
               <img src="assets/units/displacement.svg" alt="Calculate Displacement">
             </div>
             <p>Displacement</p>
           </li>
-
-          <li>
+        
+          <li id="calculate-force">
             <div>
               <img src="assets/units/force.svg" alt="Calculate Force">
             </div>
             <p>Force</p>
           </li>
-
-          <li>
+        
+          <li id="calculate-pressure">
             <div>
               <img src="assets/units/pressure.svg" alt="Calculate Pressure">
             </div>
             <p>Pressure</p>
           </li>
+        </ul>        
+      </div>
+    </section>
+    <section id="calculator">
+      <div id="unit-info">
+        <h2>Acceleration</h2>
+        <div id="switch">
+          <p>Rounded Result</p>
+          <div id="switch-image">
+            <div id="circle" class="circle-animation"></div>
+          </div>
+        </div>
+      </div>
 
-        </ul>
+      <div id="operation">
+        <div>
+          <label for="value">Value</label>
+          <input type="number" name="value" id="value" placeholder="10">
+        </div>
+
+        <div>
+          <label for="from-unit">From unit</label>
+          <input type="text" name="from-unit" id="from-unit" placeholder="Gravity">
+        </div>
+
+        <div>
+          <label for="to-unit">To unit</label>
+          <input type="text" name="to-unit" id="to-unit" placeholder="Meter per second squared">
+        </div>
+
+        <button id="calculate-operation">Calculate</button>
+
+      </div>
+      <div id="result">
+        <p>The result is: <span>98.1 m/s&sup2;</span></p>
       </div>
     </section>
   </div>

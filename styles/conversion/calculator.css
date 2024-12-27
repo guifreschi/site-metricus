@@ -1,0 +1,136 @@
+:root {
+  --first: #D586E0;
+  --second:#91A1FA;
+  --circle-color: rgb(232, 232, 232);
+  --circle-color-hover: rgb(223, 223, 223);
+}
+
+#calculator {
+  margin-top: 2rem;
+
+  & #unit-info {
+    display: flex;
+    justify-content: space-between;
+    
+    & h2 {
+      text-transform: uppercase;
+      font-size: 1.25rem;
+      color: var(--text-color-secondary);
+      font-weight: 600;
+    }
+
+    & #switch {
+      display: flex;
+      align-items: center;
+
+      & p {
+        text-transform: uppercase;
+        color: var(--text-color-secondary);
+      }
+
+      & #switch-image {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        width: 3.2rem;
+        height: 1.6rem;
+        background: linear-gradient(90deg, var(--first) 0%, var(--second) 98.93%);
+        border-radius: 1.2rem;
+        margin-left: 1rem;
+    
+        #circle {
+          background-color: var(--circle-color);
+          width: 1.2rem;
+          height: 1.2rem;
+          border-radius: 50%;
+          margin-left: .25rem;
+          margin-right: .25rem;
+          transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+    
+        &:hover {
+          & #circle {
+            background-color: var(--circle-color-hover);
+          }
+        }
+      }
+    }
+  }
+
+  & #operation {
+    margin-top: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+
+    & label {
+      display: block;
+      text-align: center;
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: var(--text-color-secondary);
+    }
+
+    & input {
+      all: unset;
+      background-color: var(--bg-color-tertiary);
+      margin-top: .75rem;
+      width: 16rem;
+      padding: .5rem;
+      border-radius: 8px;
+      outline: 1.5px solid var(--text-color-secondary);
+      transition: 0.3s;
+
+      &:hover,
+      &:focus {
+        background-color: var(--bg-color-secondary-scroll);
+        outline: 1.75px solid var(--link-color);
+      }
+    }
+
+    & input[type="number"] {
+      width: 3.25rem;
+      padding: .5rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    & button {
+      all: unset;
+      cursor: pointer;
+      background-color: var(--bg-color-tertiary);
+      justify-self: center;
+      margin-top: 1.9rem;
+      width: 8rem;
+      padding: .5rem;
+      text-align: center;
+      border-radius: 10px;
+      transition: 0.3s;
+      outline: 1.5px solid var(--text-color-secondary);
+
+      &:hover,
+      &:focus {
+        background-color: var(--bg-color-secondary-scroll);
+        outline: 1.75px solid var(--link-color);
+      }
+    }
+  }
+
+  & #result {
+    margin-top: 4rem;
+    & p {
+      font-size: 1.5rem;
+      font-family: var(--ff-secondary);
+
+      & span {
+        color: var(--brand-color);
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.circle-animation {
+  transform: translateX(120%);
+}

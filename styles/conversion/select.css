@@ -122,5 +122,12 @@
       }
     }
   }
+}
 
+.light-mode {
+  #select #simple ul p:hover,
+  #select #complex ul p:hover {
+    text-shadow: none;
+    color: black;
+  }
 }

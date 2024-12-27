@@ -4,6 +4,17 @@
   align-items: center;
   justify-content: space-between;
   text-transform: uppercase;
+
+  & h1 {
+    display: inline-block;
+      background: linear-gradient(90deg, var(--text-color) 0%, #9b59b6 25%, #8e44ad 50%, #3498db 75%, #1e90ff 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: changeColor 10s linear infinite;
+      background-size: 200% 100%;
+      background-position: 100% 0;
+  }
   & img {
     height: 2.5rem;
     width: 2.5rem;

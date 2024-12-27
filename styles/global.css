@@ -81,3 +81,7 @@ img {
 #light-mode-toggle.rotate {
   transform: rotate(360deg);
 }
+
+.display-none {
+  display: none;
+}

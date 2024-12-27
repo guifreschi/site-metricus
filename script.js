@@ -1,5 +1,7 @@
-const toggleButton = document.getElementById('light-mode-toggle')
 const body = document.body
+const toggleButton = document.getElementById('light-mode-toggle')
+const switchButton = document.querySelector('#switch')
+const circle = document.querySelector('#circle')
 
 if (localStorage.getItem('light-mode') === 'enabled') {
   body.classList.add('light-mode')
@@ -29,3 +31,7 @@ toggleButton.addEventListener('click', () => {
     toggleButton.alt = 'Light Mode'
   }
 })
+
+switchButton.onclick = () => {
+  circle.classList.toggle('circle-animation')
+}
