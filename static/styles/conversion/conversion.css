@@ -13,9 +13,11 @@
 
 @media (max-width: 79.8em) {
   .container {
-    margin-inline: 14rem;
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
   }
   .container-secondary {
-    margin-inline: 14rem;
+    margin-right: 1.25rem;
+    margin-left: 1.25rem;
   }
 }

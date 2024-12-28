@@ -1,6 +1,7 @@
 #select {
   margin-top: 4rem;
-
+  margin-bottom: 6rem;
+  
   & h2 {
     font-size: 1.75rem;
   }
@@ -40,7 +41,8 @@
     
         & img {
           width: 1.6rem;
-          width: 1.6rem;
+          height: 1.6rem;
+          object-fit: contain;
         }
     
         & p {
@@ -95,7 +97,8 @@
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          transition: 0.3s;
+          transition: transform 0.3s;
+          transform-origin: center;
 
           &:hover {
             transform: scale(1.1);
@@ -103,8 +106,10 @@
         }
     
         & img {
+          display: flex;
           width: 1.7rem;
-          width: 1.7rem;
+          height: 1.7rem;
+          object-fit: contain;
         }
     
         & p {
@@ -129,5 +134,55 @@
   #select #complex ul p:hover {
     text-shadow: none;
     color: black;
+  }
+}
+
+@media (max-width: 79.8em) {
+  #select {
+    text-align: center;
+
+    & p {
+      font-size: 1.25rem;
+    }
+
+    & h2 {
+      font-size: 2.25rem;
+    }
+
+    & #simple ul,
+    & #complex ul {
+      display: flex;
+      flex-direction: column;
+
+      & li {
+        display: flex;
+        flex-direction: column-reverse;
+        & p {
+          font-size: 1.5rem;
+        }
+      }
+
+      & li div {
+        margin-top: 0.75rem;
+        margin-bottom: 2rem;
+        width: 12rem;
+        height: 7rem;
+
+        & img {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+    }
+
+    & #complex img {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    & #complex ul li div img {
+      width: 3rem;
+      height: 3rem;
+    }
   }
 }

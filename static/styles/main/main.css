@@ -640,7 +640,7 @@ img {
   }
 }
 
-@media (max-width: 79.8em), (max-width: 48em) {
+@media (max-width: 79.8em) {
   #home {
     margin: 0;
     display: flex;
@@ -684,4 +684,8 @@ img {
     }
 
   }
+}
+
+@media (max-width: 79.8em) {
+  
 }

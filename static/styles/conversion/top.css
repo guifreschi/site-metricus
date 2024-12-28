@@ -7,13 +7,13 @@
 
   & h1 {
     display: inline-block;
-      background: linear-gradient(90deg, var(--text-color) 0%, #9b59b6 25%, #8e44ad 50%, #3498db 75%, #1e90ff 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: changeColor 10s linear infinite;
-      background-size: 200% 100%;
-      background-position: 100% 0;
+    background: linear-gradient(90deg, var(--text-color) 0%, #9b59b6 25%, #8e44ad 50%, #3498db 75%, #1e90ff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: changeColor 10s linear infinite;
+    background-size: 200% 100%;
+    background-position: 100% 0;
   }
   & img {
     height: 2.5rem;
@@ -24,5 +24,35 @@
     &:hover {
       transform: scale(1.1)
     }
+  }
+}
+
+#back-home {
+  margin-top: .75rem;
+  color: var(--text-color-secondary);
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 1.15rem;
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    color: var(--text-color-tertiary);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--text-color-tertiary);
+    transition: width 0.3s ease;
+    transform: translateX(-50%); 
+  }
+
+  &:hover::after {
+    width: 100%;
   }
 }

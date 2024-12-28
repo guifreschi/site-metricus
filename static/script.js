@@ -1,3 +1,4 @@
+const baseURL = 'http://127.0.0.1:5000'
 const body = document.body
 const toggleButton = document.getElementById('light-mode-toggle')
 const switchButton = document.querySelector('#switch')
@@ -5,6 +6,7 @@ const circle = document.querySelector('#circle')
 
 const select = document.querySelector('#select')
 const back = document.querySelector('#back')
+const backHome = document.querySelector('#back-home')
 const selectSimple = document.querySelectorAll('#select #simple ul li')
 const selectComplex = document.querySelectorAll('#select #complex ul li')
 const unitInfo = document.querySelector('#calculator #unit-info h2')
@@ -46,16 +48,27 @@ toggleButton.addEventListener('click', () => {
 
 const startButton = document.querySelector('#start button')
 
-startButton.onclick = (e) => {
-  e.preventDefault()
-  const baseURL = 'http://127.0.0.1:5000/'
-  console.log(`${baseURL}/conversion`)
-  window.location.href = `${baseURL}/conversion`
+if (startButton) {
+  startButton.onclick = (e) => {
+    e.preventDefault()
+    console.log(`${baseURL}/conversion`)
+    window.location.href = `${baseURL}/conversion`
+  }
 }
 
-switchButton.onclick = () => {
-  circle.classList.toggle('circle-animation')
-} 
+if (switchButton) {
+  switchButton.onclick = () => {
+    circle.classList.toggle('circle-animation')
+    
+    if (circle.classList.contains('rounded-result-true')) {
+      circle.classList.remove('rounded-result-true')
+      circle.classList.add('rounded-result-false')
+    } else {
+      circle.classList.remove('rounded-result-false')
+      circle.classList.add('rounded-result-true')
+    }
+  }
+}
 
 function preventNegativeValues(event) {
   const input = event.target
@@ -74,12 +87,13 @@ selectSimple.forEach(item => {
   item.onclick = () => {
     unitInfo.textContent = item.id
     calculator.classList.remove('display-none')
+    backHome.classList.add('display-none')
     select.classList.add('display-none')
     complexOperations.forEach(operation => operation.classList.add('display-none'))
     simpleOperations.forEach(operation => operation.classList.remove('display-none'))
-    location.reload()
   }
-})
+}) 
+
 
 selectComplex.forEach(item => {
   item.onclick = () => {
@@ -87,25 +101,31 @@ selectComplex.forEach(item => {
     unitInfo.textContent = unitName
     calculator.classList.remove('display-none')
     select.classList.add('display-none')
+    backHome.classList.add('display-none')
     simpleOperations.forEach(operation => operation.classList.add('display-none'))
     complexOperations.forEach(operation => operation.classList.remove('display-none'))
-    location.reload()
   }
 })
 
-back.onclick = () => {
-  calculator.classList.add('display-none')
-  select.classList.remove('display-none')
-  location.reload()
+if (back || backHome || calculateButton) {
+  back.onclick = () => {
+    calculator.classList.add('display-none')
+    select.classList.remove('display-none')
+    backHome.classList.remove('display-none')
+  }
+  
+  backHome.onclick = () => {
+    window.location.href = `${baseURL}/`
+  }
+  
+  calculateButton.onclick = (e) => {
+    e.preventDefault()
+    result.classList.remove('display-none')
+    const inputs = document.querySelectorAll('input')
+    inputs.forEach(input => {
+      input.value = ""
+    })
+    inputs[0].focus()
+  }  
 }
 
-calculateButton.onclick = (e) => {
-  e.preventDefault()
-  const inputs = document.querySelectorAll('input')
-  result.classList.remove('display-none')
-  inputs.forEach(input => {
-    input.value = ""
-  })
-  inputs[0].focus()
-  location.reload()
-}

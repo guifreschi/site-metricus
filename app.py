@@ -4,7 +4,7 @@ from flask_socketio import SocketIO
 app = Flask(__name__)
 socketio = SocketIO(app)
 
-@app.route('/home', methods=["GET"])
+@app.route('/', methods=["GET"])
 def home_page():
   return render_template('index.html')
 
