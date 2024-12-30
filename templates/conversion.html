@@ -183,22 +183,22 @@
         <!-- complex operations -->
 
         <div class="complex-operations">
-          <label for="first-value">Mass</label>
+          <label for="first-value">{{ first_value }}</label>
           <input type="number" name="first-value" id="first-value" placeholder="10">
         </div>
 
         <div class="complex-operations">
-          <label for="second-value">Volume</label>
+          <label for="second-value">{{ second_value }}</label>
           <input type="number" name="second-value" id="second-value" placeholder="10">
         </div>
 
         <div class="complex-operations">
-          <label for="result-unit">Density</label>
+          <label for="result-unit">{{ result_unit }}</label>
           <input type="text" name="result-unit" id="result-unit" placeholder="kg/m³">
-        </div>
+        </div>        
 
         <div class="complex-operations">
-          <label for="from-unit-selector">Mass unit</label>
+          <label for="from-unit-selector"> {{ from_unit }}</label>
           <select id="from-unit-selector" name="unit">
             <option value="kilogram">Kilogram</option>
             <option value="milligram">Milligram</option>
@@ -213,7 +213,7 @@
         </div>
 
         <div class="complex-operations">
-          <label for="to-unit-selector">Volume unit</label>
+          <label for="to-unit-selector"> {{ to_unit }}</label>
           <select id="to-unit-selector" name="unit">
             <option value="cubic-meter">Cubic Meter</option>
             <option value="milliliter">Milliliter</option>

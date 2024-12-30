@@ -112,6 +112,7 @@ if (back || backHome || calculateButton) {
     calculator.classList.add('display-none')
     select.classList.remove('display-none')
     backHome.classList.remove('display-none')
+    window.location.href = `${baseURL}/conversion`
   }
   
   backHome.onclick = () => {
@@ -129,3 +130,21 @@ if (back || backHome || calculateButton) {
   }  
 }
 
+document.querySelectorAll('li').forEach(item => {
+  item.addEventListener('click', () => {
+    const clickedId = item.id
+
+    fetch('/conversion', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ clicked_id: clickedId })
+    })
+    .then(response => response.json())  
+    .then(data => {
+        console.log('Response from server:', data)
+    })
+    .catch(error => console.error('Error:', error))
+  })
+})
