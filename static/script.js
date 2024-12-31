@@ -17,6 +17,12 @@ const result = document.querySelector('#result')
 const complexOperations = document.querySelectorAll('div .complex-operations')
 const simpleOperations = document.querySelectorAll('div .simple-operations')
 
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.body.classList.add('theme-loaded')
+  }, 270) 
+})
+
 if (localStorage.getItem('light-mode') === 'enabled') {
   body.classList.add('light-mode')
   toggleButton.src = '/static/assets/main-images/moon.svg' 
@@ -85,40 +91,49 @@ inputFields.forEach(input => {
 
 selectSimple.forEach(item => {
   item.onclick = () => {
-    unitInfo.textContent = item.id
-    calculator.classList.remove('display-none')
-    backHome.classList.add('display-none')
-    select.classList.add('display-none')
-    complexOperations.forEach(operation => operation.classList.add('display-none'))
-    simpleOperations.forEach(operation => operation.classList.remove('display-none'))
+    console.log(item.id)
+    localStorage.setItem('unitId', item.id)
+    window.location.href = `${baseURL}/conversion/calculator`
   }
-}) 
-
+})
 
 selectComplex.forEach(item => {
   item.onclick = () => {
     const unitName = item.id.replace('-', ' ')
-    unitInfo.textContent = unitName
-    calculator.classList.remove('display-none')
-    select.classList.add('display-none')
-    backHome.classList.add('display-none')
-    simpleOperations.forEach(operation => operation.classList.add('display-none'))
-    complexOperations.forEach(operation => operation.classList.remove('display-none'))
+    console.log(unitName)
+    localStorage.setItem('unitId', unitName)
+    window.location.href = `${baseURL}/conversion/calculator`
   }
 })
 
-if (back || backHome || calculateButton) {
+document.addEventListener('DOMContentLoaded', () => {
+  const unitId = localStorage.getItem('unitId')
+  if (!unitInfo) {
+    console.error('Element unitInfo not found!')
+    return
+  }
+
+  if (unitId) {
+    unitInfo.textContent = unitId
+    console.log("Item:", unitId)
+  } else {
+    console.error('No item on localStorage!')
+  }
+})
+
+if (back) {
   back.onclick = () => {
-    calculator.classList.add('display-none')
-    select.classList.remove('display-none')
-    backHome.classList.remove('display-none')
     window.location.href = `${baseURL}/conversion`
   }
-  
+}
+
+if (backHome) {
   backHome.onclick = () => {
     window.location.href = `${baseURL}/`
   }
-  
+}
+
+if (calculateButton) {
   calculateButton.onclick = (e) => {
     e.preventDefault()
     result.classList.remove('display-none')
@@ -127,24 +142,30 @@ if (back || backHome || calculateButton) {
       input.value = ""
     })
     inputs[0].focus()
-  }  
+  }
 }
 
 document.querySelectorAll('li').forEach(item => {
   item.addEventListener('click', () => {
     const clickedId = item.id
-
-    fetch('/conversion', {
-      method: 'POST',
-      headers: {
+    if (clickedId) {
+      fetch('/conversion', {
+        method: 'POST',
+        headers: {
           'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ clicked_id: clickedId })
-    })
-    .then(response => response.json())  
-    .then(data => {
-        console.log('Response from server:', data)
-    })
-    .catch(error => console.error('Error:', error))
+        },
+        body: JSON.stringify({ clicked_id: clickedId })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          console.log('Data successfully received')
+          window.location.href = '/conversion/calculator'
+        }
+      })
+      .catch(error => console.error('Error:', error))
+    } else {
+      console.log("No valid ID found to send.")
+    }
   })
 })

@@ -14,8 +14,8 @@ mass_units = [
 
 volume_units = [
   "milliliter",
-  "cubic_centimeter",
-  "fluid_ounce",
+  "cubic centimeter",
+  "fluid ounce",
   "cup",
   "pint",
   "quart",
@@ -36,21 +36,21 @@ length_units = [
   "meter",
   "kilometer",
   "mile",
-  "nautical_mile",
+  "nautical mile",
 ]
 
-speed_units = ['meter_per_second', 'kilometer_per_hour', 'mile_per_hour', 'knot']
+speed_units = ['meter per second', 'kilometer per hour', 'mile per hour', 'knot']
 
 force_example = "newton"
 
 acceleration_units = [
-  "meter_per_second_squared",
-  "foot_per_second_squared",
-  "centimeter_per_second_squared",
+  "meter per second squared",
+  "foot per second squared",
+  "centimeter per second squared",
   "gal",
-  "inch_per_second_squared",
-  "kilometer_per_hour_squared",
-  "mile_per_hour_squared",
+  "inch per second squared",
+  "kilometer per hour squared",
+  "mile per hour squared",
   "gravity",
 ]
 
@@ -60,22 +60,22 @@ force_units = [
   "newton",
   "dyne",
   "kilonewton",
-  "pound_force",
-  "ounce_force",
-  "ton_force",
-  "kilogram_force",
-  "gram_force",
+  "pound force",
+  "ounce force",
+  "ton force",
+  "kilogram force",
+  "gram force",
   "millinewton",
   "poundal",
-  "slug_force",
+  "slug force",
 ]
 
 area_units = [
-  "square_centimeter",
-  "square_foot",
-  "square_meter",
-  "square_yard",
+  "square centimeter",
+  "square foot",
+  "square meter",
+  "square yard",
   "acre",
   "hectare",
-  "square_kilometer",
+  "square kilometer",
 ]

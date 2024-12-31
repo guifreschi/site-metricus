@@ -57,3 +57,5 @@ coverage.xml
 *.pot
 
 config.py
+
+mytest.py

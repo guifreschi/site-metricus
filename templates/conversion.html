@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/conversion/top.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/conversion/select.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/conversion/calculator.css') }}">  
-  <link rel="icon" href="{{ url_for('static', filename='assets/main-images/logo-metricus.svg') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='assets/main-images/logo-metricus.svg') }}" type="image/x-icon">  
 </head>
 <body>
   <div class="container">
@@ -41,13 +41,6 @@
               <img src="{{ url_for('static', filename='assets/units/area.svg') }}" alt="Area icon">
             </div>
             <p>Area</p>
-          </li>
-        
-          <li id="electricity">
-            <div>
-              <img src="{{ url_for('static', filename='assets/units/electricity.svg') }}" alt="Electricity icon">
-            </div>
-            <p>Electricity</p>
           </li>
         
           <li id="energy">
@@ -149,96 +142,6 @@
           </li>
         </ul>        
       </div>      
-    </section>
-
-    <section id="calculator" class="display-none">
-      <div id="unit-info">
-        <h2>Acceleration</h2>
-        <div id="switch">
-          <p>Rounded Result</p>
-          <div id="switch-image">
-            <div id="circle"></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="operation" class="display-none">
-
-        <!-- simple opertions -->
-        <div class="display-none simple-operations">
-          <label for="value">Value</label>
-          <input type="number" name="value" id="value" placeholder="10">
-        </div>
-
-        <div class="display-none simple-operations">
-          <label for="from-unit">From unit</label>
-          <input type="text" name="from-unit" id="from-unit" placeholder="Gravity">
-        </div>
-
-        <div class="display-none simple-operations">
-          <label for="to-unit">To unit</label>
-          <input type="text" name="to-unit" id="to-unit" placeholder="Meter per second squared">
-        </div>
-
-        <!-- complex operations -->
-
-        <div class="complex-operations">
-          <label for="first-value">{{ first_value }}</label>
-          <input type="number" name="first-value" id="first-value" placeholder="10">
-        </div>
-
-        <div class="complex-operations">
-          <label for="second-value">{{ second_value }}</label>
-          <input type="number" name="second-value" id="second-value" placeholder="10">
-        </div>
-
-        <div class="complex-operations">
-          <label for="result-unit">{{ result_unit }}</label>
-          <input type="text" name="result-unit" id="result-unit" placeholder="kg/m³">
-        </div>        
-
-        <div class="complex-operations">
-          <label for="from-unit-selector"> {{ from_unit }}</label>
-          <select id="from-unit-selector" name="unit">
-            <option value="kilogram">Kilogram</option>
-            <option value="milligram">Milligram</option>
-            <option value="carat">Carat</option>
-            <option value="gram">Gram</option>
-            <option value="ounce">Ounce</option>
-            <option value="pound">Pound</option>
-            <option value="stone">Stone</option>
-            <option value="slug">Slug</option>
-            <option value="tonne">Tonne</option>
-          </select>
-        </div>
-
-        <div class="complex-operations">
-          <label for="to-unit-selector"> {{ to_unit }}</label>
-          <select id="to-unit-selector" name="unit">
-            <option value="cubic-meter">Cubic Meter</option>
-            <option value="milliliter">Milliliter</option>
-            <option value="cubic-centimeter">Cubic Centimeter</option>
-            <option value="fluid-ounce">Fluid Ounce</option>
-            <option value="cup">Cup</option>
-            <option value="pint">Pint</option>
-            <option value="quart">Quart</option>
-            <option value="liter">Liter</option>
-            <option value="gallon">Gallon</option>
-            <option value="barrel">Barrel</option>
-          </select>
-        </div>
-
-        <button id="calculate-operation">Calculate</button>
-
-      </div>
-
-      <div id="result" class="display-none">
-        <p>The result is: <span>98.1 m/s&sup2;</span></p>
-      </div>
-
-      <div id="back">
-        <p>Back</span></p>
-      </div>
     </section>
   </div>
   <script src="{{ url_for('static', filename='script.js') }}"></script>

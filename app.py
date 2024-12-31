@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template, session
+from flask import Flask, jsonify, request, render_template, session, redirect
 from flask_socketio import SocketIO
 from operations import get_datas
 import config
@@ -15,37 +15,40 @@ def home_page():
 @app.route('/conversion', methods=["POST"])
 def conversion_page_post():
   data = request.get_json()
-  clicked_id = data.get('clicked_id').replace('-', '_')
+  clicked_id = data.get('clicked_id').replace('-', '_')  
   if clicked_id:
     print("CLICKED ID:", clicked_id)
-    datas = get_datas(checked_id=clicked_id) 
-    print(datas)
-    session['first_value'] = datas["first_value"]
-    session['second_value'] = datas["second_value"]
-    session['result_unit'] = datas["result_unit"]
-    session['from_unit'] = datas["from_unit"]
-    session['to_unit'] = datas["to_unit"]
-    print(session['first_value'])
-  return jsonify({'status': 'success'})  
+    datas = get_datas(checked_id=clicked_id)  
+    
+    session['datas'] = datas
+    return jsonify({'status': 'success'})
+  
+  return jsonify({'status': 'failed'})
+      
 
 @app.route('/conversion', methods=["GET"])
 def conversion_page_get():
-  first_value = session.get('first_value')
-  second_value = session.get('second_value')
-  result_unit = session.get('result_unit')
-  from_unit = session.get('from_unit')
-  to_unit = session.get('to_unit')
+  return render_template('conversion.html')
 
-  print(first_value)
+@app.route('/conversion/calculator', methods=["GET"])
+def calculator_page_get():
+  datas = session.get('datas', None)
+
+  if datas:
+    print("Dados recuperados para a unidade:", datas)
+    if datas.get('complex_operation', False):  
+      page = 'calculator-complex.html'
+    else:
+      page = 'calculator.html'
+  else:
+    print("Unit not found")
+    return redirect('/conversion')  
   
-  return render_template(
-    'conversion.html',
-    first_value=first_value,
-    second_value=second_value,
-    result_unit=result_unit,
-    from_unit=from_unit,
-    to_unit=to_unit
-  )
+  response = render_template(page, datas=datas)
+
+  session.pop('datas', None) 
+
+  return response
 
 @socketio.on('connect')
 def handle_connect():

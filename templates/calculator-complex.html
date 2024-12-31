@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metricus</title>
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles/conversion/conversion.css') }}"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/conversion/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/conversion/conversion.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/conversion/top.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/conversion/select.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/conversion/calculator.css') }}">  
+  <link rel="icon" href="{{ url_for('static', filename='assets/main-images/logo-metricus.svg') }}" type="image/x-icon">
+</head>
+<body>
+  <div class="container">
+    <section id="top">
+      <h1>Metricus Conversions</h1>
+      <img src="{{ url_for('static', filename='assets/main-images/sun.svg') }}" alt="Light mode" id="light-mode-toggle">
+    </section>
+    <section id="calculator">
+      <div id="unit-info">
+        <h2></h2>
+        <div id="switch">
+          <p>Rounded Result</p>
+          <div id="switch-image">
+            <div id="circle"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="operation">
+
+        <div class="complex-operations">
+          <label for="first-value">{{ datas.get('first_value', '') }}</label>
+          <input type="number" name="first-value" id="first-value" placeholder="10">
+        </div>
+        
+        <div class="complex-operations">
+          <label for="second-value">{{ datas.get('second_value', '') }}</label>
+          <input type="number" name="second-value" id="second-value" placeholder="10">
+        </div>
+        
+        <div class="complex-operations">
+          <label for="result-unit">{{ datas.get('result_unit', '') }}</label>
+          <input type="text" name="result-unit" id="result-unit" placeholder="{{ datas.get('result_example', '') }}">
+        </div>        
+        
+        <div class="complex-operations">
+          <label for="from-unit-selector">{{ datas.get('from_unit', '') }}</label>
+          <select id="from-unit-selector" name="unit">
+            {% for i in datas.get('first_unit_examples') %}
+            <option value="{{ i }}">{{ i.capitalize() }}</option>
+            {% endfor %}
+            <!-- <option value="kilogram">Kilogram</option>
+            <option value="milligram">Milligram</option>
+            <option value="carat">Carat</option>
+            <option value="gram">Gram</option>
+            <option value="ounce">Ounce</option>
+            <option value="pound">Pound</option>
+            <option value="stone">Stone</option>
+            <option value="slug">Slug</option>
+            <option value="tonne">Tonne</option> -->
+          </select>
+        </div>
+        
+        <div class="complex-operations">
+          <label for="to-unit-selector">{{ datas.get('to_unit', '') }}</label>
+          <select id="to-unit-selector" name="unit">
+            {% for i in datas.get('second_unit_examples') %}
+                <option value="{{ i }}">{{ i.capitalize() }}</option>
+            {% endfor %}
+
+
+            <!-- <option value="cubic-meter">Cubic Meter</option>
+            <option value="milliliter">Milliliter</option>
+            <option value="cubic-centimeter">Cubic Centimeter</option>
+            <option value="fluid-ounce">Fluid Ounce</option>
+            <option value="cup">Cup</option>
+            <option value="pint">Pint</option>
+            <option value="quart">Quart</option>
+            <option value="liter">Liter</option>
+            <option value="gallon">Gallon</option>
+            <option value="barrel">Barrel</option> -->
+          </select>
+        </div>
+
+        <button id="calculate-operation">Calculate</button>
+
+      </div>
+
+      <div id="result" class="display-none">
+        <p>The result is: <span>98.1 m/s&sup2;</span></p>
+      </div>
+
+      <div id="back">
+        <p>Back</p>
+      </div>
+    </section>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
