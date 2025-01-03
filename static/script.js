@@ -133,18 +133,6 @@ if (backHome) {
   }
 }
 
-if (calculateButton) {
-  calculateButton.onclick = (e) => {
-    e.preventDefault()
-    result.classList.remove('display-none')
-    const inputs = document.querySelectorAll('input')
-    inputs.forEach(input => {
-      input.value = ""
-    })
-    inputs[0].focus()
-  }
-}
-
 document.querySelectorAll('li').forEach(item => {
   item.addEventListener('click', () => {
     const clickedId = item.id
@@ -160,7 +148,7 @@ document.querySelectorAll('li').forEach(item => {
       .then(data => {
         if (data.status === 'success') {
           console.log('Data successfully received')
-          window.location.href = '/conversion/calculator'
+          window.location.href = `/conversion/calculator?unit=${clickedId}`
         }
       })
       .catch(error => console.error('Error:', error))
@@ -169,3 +157,66 @@ document.querySelectorAll('li').forEach(item => {
     }
   })
 })
+
+const roundedResultElements = document.querySelectorAll('#circle')
+const simpleValue = document.querySelector('#value')
+const simpleFromUnit = document.querySelector('#from-unit')
+const simpleToUnit = document.querySelector('#to-unit')
+const finalResult = document.querySelector('#result span')
+const unitH2 = document.querySelector('#unit-info h2')
+
+const firstValue = document.querySelector('#first-value')
+const secondValue = document.querySelector('#second-value')
+const resultUnit = document.querySelector('#result-unit')
+const fromUnitSelect= document.querySelector('#from-unit-selector')
+const toUnitSelect = document.querySelector('#to-unit-selector')
+
+
+if (calculateButton) {
+  calculateButton.onclick = (e) => {
+    e.preventDefault()
+
+    const roundedResultClasses = Array.from(roundedResultElements).map(el => Array.from(el.classList))
+
+    const requestBody = {
+      simpleValue: simpleValue ? simpleValue.value || '' : '',
+      simpleFromUnit: simpleFromUnit ? simpleFromUnit.value.trim() || '' : '',
+      simpleToUnit: simpleToUnit ? simpleToUnit.value.trim() || '' : '',
+      roundedResult: roundedResultClasses,
+      unitName: unitH2 ? unitH2.textContent : '',
+      firstValue: firstValue ? firstValue.value || '' : '',
+      secondValue: secondValue ? secondValue.value || '' : '',
+      resultUnit: resultUnit ? resultUnit.value.trim() || '' : '',
+      fromUnitSelect: fromUnitSelect ? fromUnitSelect.value || '' : '',
+      toUnitSelect: toUnitSelect ? toUnitSelect.value || '' : '',
+    }
+
+    fetch('/conversion/calculator', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestBody)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Resposta do servidor:', data)
+      if (data.success) {
+        finalResult.textContent = data.message
+      } else {
+        console.error('Erro no cálculo:', data.message)
+      }
+    })
+    .catch(error => {
+      console.error('Erro ao enviar dados:', error)
+    })
+
+    const inputs = document.querySelectorAll('input')
+    inputs.forEach(input => {
+      input.value = ""
+    })
+    inputs[0].focus()
+
+    result.classList.remove('display-none')
+  }
+}
