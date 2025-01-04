@@ -170,7 +170,9 @@ const secondValue = document.querySelector('#second-value')
 const resultUnit = document.querySelector('#result-unit')
 const fromUnitSelect= document.querySelector('#from-unit-selector')
 const toUnitSelect = document.querySelector('#to-unit-selector')
-
+const inputs = document.querySelectorAll('input')
+const errorMessage = document.querySelector('#error-message')
+closeWarning = document.querySelector('#close-warning')
 
 if (calculateButton) {
   calculateButton.onclick = (e) => {
@@ -203,8 +205,8 @@ if (calculateButton) {
       console.log('Resposta do servidor:', data)
       if (data.success) {
         finalResult.textContent = data.message
+        errorMessage.style.display = 'none';
 
-        const inputs = document.querySelectorAll('input')
         inputs[0].focus()
         setTimeout(() => {
           inputs.forEach(input => {
@@ -214,13 +216,18 @@ if (calculateButton) {
 
         result.classList.remove('display-none')
       } else {
+        result.classList.add('display-none')
         console.error('Erro no cálculo:', data.message)
-        const errorMessage = document.querySelector('#error-message')
-        const closeWarning = document.querySelector('#close-warning')
         errorMessage.style.display = 'flex';
         closeWarning.onclick = () => {
           errorMessage.style.display = 'none';
-        }
+          setTimeout(() => {
+            inputs.forEach(input => {
+              inputs[0].focus()
+            })
+          }, 1000)
+          }
+
       }
     })
     .catch(error => {
