@@ -84,9 +84,18 @@ def calculator_page_post():
     
     print(simpleValue, simpleFromUnit, simpleToUnit, rounded_result, unit_name)
     if 'calculate' in unit_name:
-      result = complex_conversion(unit_name, firstValue=firstValue, secondValue=secondValue, resultUnit=resultUnit, fromUnitSelect=fromUnitSelect, toUnitSelect=toUnitSelect, rounded_result=rounded_result)
+      try:
+        result = complex_conversion(unit_name, firstValue=firstValue, secondValue=secondValue, resultUnit=resultUnit, fromUnitSelect=fromUnitSelect, toUnitSelect=toUnitSelect, rounded_result=rounded_result)
+      except:
+        result = None
     else:
-      result = simple_conversion(unit_name=unit_name, simpleValue=simpleValue, simpleFromUnit=simpleFromUnit, simpleToUnit=simpleToUnit, rounded_result=rounded_result)
+      try:
+        result = simple_conversion(unit_name=unit_name, simpleValue=simpleValue, simpleFromUnit=simpleFromUnit, simpleToUnit=simpleToUnit, rounded_result=rounded_result)
+      except:
+        result = None
+    if not result:
+      return jsonify({"success": False, "message": "Error"})
+                     
     return jsonify({"success": True, "message": f"{result}"})
 
 if __name__ == '__main__':

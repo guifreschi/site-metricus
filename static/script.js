@@ -203,22 +203,23 @@ if (calculateButton) {
       console.log('Resposta do servidor:', data)
       if (data.success) {
         finalResult.textContent = data.message
+
+        const inputs = document.querySelectorAll('input')
+        inputs[0].focus()
+        setTimeout(() => {
+          inputs.forEach(input => {
+            input.value = ""
+          })
+        }, 1000)
+
+        result.classList.remove('display-none')
       } else {
         console.error('Erro no cálculo:', data.message)
+        alert("An error occurred. Please ensure that all required fields are filled out.")
       }
     })
     .catch(error => {
       console.error('Erro ao enviar dados:', error)
     })
-
-    const inputs = document.querySelectorAll('input')
-    inputs[0].focus()
-    setTimeout(() => {
-      inputs.forEach(input => {
-        input.value = ""
-      })
-    }, 1000)
-
-    result.classList.remove('display-none')
   }
 }
