@@ -52,9 +52,16 @@
 
       </div>
 
+      <div id="error-message" style="display: none;">
+        <img src="{{ url_for('static', filename='assets/main-images/close-circle.svg') }}" id="close-warning" alt="close button">
+        <p id="desktop-error">An error occurred. Please ensure that all required fields are filled out.</p>
+        <p id="mobile-error">Please fill out all required fields.</p>
+      </div>
+      
       <div id="result" class="display-none">
         <p>The result is: <span></span></p>
       </div>
+
 
       <div id="back">
         <p>Back</span></p>

@@ -55,15 +55,6 @@
             {% for i in datas.get('first_unit_examples') %}
             <option value="{{ i }}">{{ i.capitalize() }}</option>
             {% endfor %}
-            <!-- <option value="kilogram">Kilogram</option>
-            <option value="milligram">Milligram</option>
-            <option value="carat">Carat</option>
-            <option value="gram">Gram</option>
-            <option value="ounce">Ounce</option>
-            <option value="pound">Pound</option>
-            <option value="stone">Stone</option>
-            <option value="slug">Slug</option>
-            <option value="tonne">Tonne</option> -->
           </select>
         </div>
         
@@ -78,6 +69,12 @@
 
         <button id="calculate-operation">Calculate</button>
 
+      </div>
+
+      <div id="error-message" style="display: none;">
+        <img src="{{ url_for('static', filename='assets/main-images/close-circle.svg') }}" id="close-warning" alt="close button">
+        <p id="desktop-error">An error occurred. Please ensure that all required fields are filled out.</p>
+        <p id="mobile-error">Please fill out all required fields.</p>
       </div>
 
       <div id="result" class="display-none">

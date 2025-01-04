@@ -215,7 +215,12 @@ if (calculateButton) {
         result.classList.remove('display-none')
       } else {
         console.error('Erro no cálculo:', data.message)
-        alert("An error occurred. Please ensure that all required fields are filled out.")
+        const errorMessage = document.querySelector('#error-message')
+        const closeWarning = document.querySelector('#close-warning')
+        errorMessage.style.display = 'flex';
+        closeWarning.onclick = () => {
+          errorMessage.style.display = 'none';
+        }
       }
     })
     .catch(error => {
