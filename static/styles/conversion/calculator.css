@@ -185,7 +185,7 @@
   & #error-message {
     margin-top: 4rem;
     background-color: var(--error-color);
-    width: 32.5rem;
+    width: 34.5rem;
     height: 3rem;
     border-radius: 12px;
     display: flex;
