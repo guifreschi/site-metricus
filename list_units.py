@@ -22,7 +22,7 @@ volume_units = [
   "liter",
   "gallon",
   "barrel",
-  "cubic_meter",
+  "cubic meter",
 ]
 
 displacement_example = "hour"

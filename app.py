@@ -1,12 +1,9 @@
 from flask import Flask, jsonify, request, render_template, session, redirect
-from flask_socketio import SocketIO
 from operations import get_datas, simple_conversion, complex_conversion
 import config
 
 app = Flask(__name__)
 app.secret_key = config.SECRET_KEY
-
-socketio = SocketIO(app)
 
 @app.route('/', methods=["GET"])
 def home_page():
@@ -92,13 +89,5 @@ def calculator_page_post():
       result = simple_conversion(unit_name=unit_name, simpleValue=simpleValue, simpleFromUnit=simpleFromUnit, simpleToUnit=simpleToUnit, rounded_result=rounded_result)
     return jsonify({"success": True, "message": f"{result}"})
 
-@socketio.on('connect')
-def handle_connect():
-  print('Client connected to the server.')
-
-@socketio.on('disconnect')
-def handle_disconnect():
-  print('Client has disconnected to the server.')
-
 if __name__ == '__main__':
-  socketio.run(app, debug=True)
+  app.run(debug=True)

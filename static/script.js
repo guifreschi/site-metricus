@@ -20,7 +20,7 @@ const simpleOperations = document.querySelectorAll('div .simple-operations')
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     document.body.classList.add('theme-loaded')
-  }, 270) 
+  }, 300) 
 })
 
 if (localStorage.getItem('light-mode') === 'enabled') {
@@ -212,10 +212,12 @@ if (calculateButton) {
     })
 
     const inputs = document.querySelectorAll('input')
-    inputs.forEach(input => {
-      input.value = ""
-    })
     inputs[0].focus()
+    setTimeout(() => {
+      inputs.forEach(input => {
+        input.value = ""
+      })
+    }, 1000)
 
     result.classList.remove('display-none')
   }
