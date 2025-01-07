@@ -205,7 +205,7 @@ if (calculateButton) {
       console.log('Resposta do servidor:', data)
       if (data.success) {
         finalResult.textContent = data.message
-        errorMessage.style.display = 'none';
+        errorMessage.style.display = 'none'
 
         inputs[0].focus()
         setTimeout(() => {
@@ -218,9 +218,9 @@ if (calculateButton) {
       } else {
         result.classList.add('display-none')
         console.error('Erro no cálculo:', data.message)
-        errorMessage.style.display = 'flex';
+        errorMessage.style.display = 'flex'
         closeWarning.onclick = () => {
-          errorMessage.style.display = 'none';
+          errorMessage.style.display = 'none'
           setTimeout(() => {
             inputs.forEach(input => {
               inputs[0].focus()

@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_DATABASE: 'metricus-site-db'
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+    ports:
+      - "3306:3306"
+    expose:
+      - '3306'
+    volumes:
+      - C:/Programação/site-metricus/metricus-site-db/mysql:/var/lib/mysql
+    env_file:
+      - .env
