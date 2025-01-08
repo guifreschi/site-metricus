@@ -1,6 +1,6 @@
 from Metricus import *
 from Metricus.utilities import *
-from list_units import *
+from utilities.list_units import *
 
 def get_datas(checked_id):
   data_mapping = {

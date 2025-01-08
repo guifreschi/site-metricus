@@ -1,11 +1,11 @@
 from flask import Flask, jsonify, request, render_template, session, redirect
-from operations import get_datas, simple_conversion, complex_conversion
+from utilities.operations import get_datas, simple_conversion, complex_conversion
 import config
 from Metricus.utilities.pretty_response import PrettyResponse
 from database import db
 from models.history import History
 import uuid
-from tasks import schedule_data_deletion
+from utilities.tasks import schedule_data_deletion
 
 app = Flask(__name__)
 app.secret_key = config.SECRET_KEY
