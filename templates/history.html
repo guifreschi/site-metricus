@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metricus</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/history/history.css') }}">
+</head>
+<body>
+  <div class="container">
+    <section id="top">
+      <h1>Metricus Conversions</h1>
+      <img src="{{ url_for('static', filename='assets/main-images/sun.svg') }}" alt="Light mode" id="light-mode-toggle">
+    </section>
+    <div id="back-conversion">
+      <p>Back</p>
+    </div>
+    <section id="recent-conversions">
+      <h2>Recent conversions</h2>
+      <p>The history will be deleted within <span>30 minutes</span></p>
+      <div id="clean-history-div">
+        <img src="{{ url_for('static', filename='assets/main-images/warning-clear.svg') }}" alt="Clean history warning">
+        <p id="clean-history">Clean History</p>
+      </div>
+
+      <div id="list-conversions">
+        <h3 style="text-transform: uppercase;">Last 5 conversions:</h3>
+        <ul>
+          <li>The conversion of 50 kilograms in 100 grams equals 0.5. The result is not rounded.</li>
+          <div class="delete-conversion">
+            <img src="{{ url_for('static', filename='assets/main-images/bin.svg') }}" alt="Delete conversion">
+          </div>
+        </ul>
+
+        <ul>
+          <li>The conversion of 50 kilograms in 100 grams equals 0.5. The result is not rounded.</li>
+          <div class="delete-conversion">
+            <img src="{{ url_for('static', filename='assets/main-images/bin.svg') }}" alt="Delete conversion">
+          </div>
+        </ul>
+
+        <ul>
+          <li>The conversion of 50 kilograms in 100 grams equals 0.5. The result is not rounded.</li>
+          <div class="delete-conversion">
+            <img src="{{ url_for('static', filename='assets/main-images/bin.svg') }}" alt="Delete conversion">
+          </div>
+        </ul>
+
+        <ul>
+          <li>The conversion of 50 kilograms in 100 grams equals 0.5. The result is not rounded.</li>
+          <div class="delete-conversion">
+            <img src="{{ url_for('static', filename='assets/main-images/bin.svg') }}" alt="Delete conversion">
+          </div>
+        </ul>
+
+        <ul>
+          <li>The conversion of 50 kilograms in 100 grams equals 0.5. The result is not rounded.</li>
+          <div class="delete-conversion">
+            <img src="{{ url_for('static', filename='assets/main-images/bin.svg') }}" alt="Delete conversion">
+          </div>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

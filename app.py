@@ -138,5 +138,9 @@ def calculator_page_post():
 
   return jsonify({"success": True, "message": str(result)})
 
+@app.route('/conversion/history', methods=["GET"])
+def history_page():
+  return render_template('history.html')
+
 if __name__ == '__main__':
   app.run(debug=True)

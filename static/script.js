@@ -235,3 +235,18 @@ if (calculateButton) {
     })
   }
 }
+
+const historyPage = document.querySelector('#history')
+const backConversion = document.getElementById('back-conversion')
+
+if (backConversion) {
+  backConversion.onclick = () => {
+    window.location.href = `${baseURL}/conversion`
+  }
+}
+
+if (historyPage) {
+  historyPage.onclick = () => {
+    window.location.href = `${baseURL}/conversion/history`
+  }
+}
