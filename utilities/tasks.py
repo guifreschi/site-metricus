@@ -6,9 +6,9 @@ def delete_user_data(user_id, db, History):
   with app.app_context(): 
     History.query.filter_by(user_id=user_id).delete()  
     db.session.commit()
-    print(f"User data for {user_id} deleted after 30 minutes.")
+    print(f"User data for {user_id} deleted after 15 minutes.")
 
-def schedule_data_deletion(user_id, db, History, expiration_time=30):
-  print(30 * 60)
+def schedule_data_deletion(user_id, db, History, expiration_time=15):
+  print(15 * 60)
   timer = threading.Timer(expiration_time * 60, delete_user_data, [user_id, db, History])
   timer.start()

@@ -97,6 +97,9 @@ def get_datas(checked_id):
   return data_mapping.get(checked_id, None)
 
 def simple_conversion(unit_name: str, simpleValue: float, simpleFromUnit: str, simpleToUnit: str, rounded_result: bool) -> str:
+  print(humanize_input(unit_name))
+  print(humanize_input(simpleFromUnit))
+  print(humanize_input(simpleToUnit))
   unit_converters = {
     'acceleration': acceleration_converter,
     'area': area_converter,

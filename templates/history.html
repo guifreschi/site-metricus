@@ -20,15 +20,16 @@
     </div>
     <section id="recent-conversions">
       <h2>Recent conversions</h2>
-      <p>The history will be deleted within <span>30 minutes</span></p>
+      <p>The history will be deleted within <span>15 minutes</span></p>
       <div id="clean-history-div">
         <img src="{{ url_for('static', filename='assets/main-images/warning-clear.svg') }}" alt="Clean history warning">
         <p id="clean-history">Clean History</p>
       </div>
 
       <div id="list-conversions">
-        <h3 style="text-transform: uppercase;">Last 5 conversions:</h3>
-        <ul>
+        <h3 style="text-transform: uppercase;">Your recent conversions:</h3>
+        <p id="no-conversion" class="display-none">No conversions found...</p>
+        <!-- <ul>
           <li>The conversion of 50 kilograms in 100 grams equals 0.5. The result is not rounded.</li>
           <div class="delete-conversion">
             <img src="{{ url_for('static', filename='assets/main-images/bin.svg') }}" alt="Delete conversion">
@@ -40,28 +41,7 @@
           <div class="delete-conversion">
             <img src="{{ url_for('static', filename='assets/main-images/bin.svg') }}" alt="Delete conversion">
           </div>
-        </ul>
-
-        <ul>
-          <li>The conversion of 50 kilograms in 100 grams equals 0.5. The result is not rounded.</li>
-          <div class="delete-conversion">
-            <img src="{{ url_for('static', filename='assets/main-images/bin.svg') }}" alt="Delete conversion">
-          </div>
-        </ul>
-
-        <ul>
-          <li>The conversion of 50 kilograms in 100 grams equals 0.5. The result is not rounded.</li>
-          <div class="delete-conversion">
-            <img src="{{ url_for('static', filename='assets/main-images/bin.svg') }}" alt="Delete conversion">
-          </div>
-        </ul>
-
-        <ul>
-          <li>The conversion of 50 kilograms in 100 grams equals 0.5. The result is not rounded.</li>
-          <div class="delete-conversion">
-            <img src="{{ url_for('static', filename='assets/main-images/bin.svg') }}" alt="Delete conversion">
-          </div>
-        </ul>
+        </ul> -->
       </div>
     </section>
   </div>

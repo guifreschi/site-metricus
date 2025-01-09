@@ -250,3 +250,87 @@ if (historyPage) {
     window.location.href = `${baseURL}/conversion/history`
   }
 }
+
+fetch('/conversion/history/data')
+.then(response => response.json())
+.then(data => {
+  console.log(data)
+
+  const listConversion = document.getElementById('list-conversions')
+  const clearHistory = document.getElementById('clean-history')
+  const limitedData = data.slice(0, 5)
+
+  if (data.length > 0) {
+    limitedData.forEach(item => {
+      const ul = document.createElement('ul')
+      const li = document.createElement('li')
+      const div = document.createElement('div')
+      const deleteButton = document.createElement('img')
+
+      div.classList.add('delete-conversion')
+      deleteButton.src = '/static/assets/main-images/bin.svg'
+      deleteButton.alt = 'Delete conversion'
+      deleteButton.dataset.id = item.id
+
+      deleteButton.onclick = async () => {
+        try {
+          const response = await fetch('/conversion/history/delete', {
+            method: 'POST',
+            headers: {
+              "Content-Type": "application/json" 
+            },
+            body: JSON.stringify({
+              id: item.id
+            })
+          })
+
+          const result = await response.json()
+
+          if (result.success) {
+            ul.remove()
+          } else {
+            console.error('Error deleting item:', result.message)
+          }
+        } catch (error) {
+          console.error('Request failed:', error)
+        }
+      }
+
+      li.textContent = item.message
+      div.appendChild(deleteButton)
+      ul.appendChild(li)
+      ul.appendChild(div)
+      listConversion.appendChild(ul)
+    })
+
+    clearHistory.onclick = async () => {
+      const confirmation = confirm("Are you sure you want to clear all history?")
+
+      if (confirmation) {
+        try {
+          const response = await fetch('/conversion/history/clear', {
+            method: 'POST',
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+
+          const result = await response.json()
+
+          if (result.success) {
+            listConversion.innerHTML = ''
+          } else {
+            console.error('Error clearing history:', result.message)
+          }
+        } catch (error) {
+          console.error('Request failed:', error)
+        }
+      }
+    }
+  } else {
+    const noConversion = document.getElementById('no-conversion')
+    noConversion.classList.remove('display-none')
+  }
+  }).catch(error => {
+    console.error('Error loading data:', error)
+  })

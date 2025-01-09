@@ -100,10 +100,10 @@ body.theme-loaded {
 }
 
 #recent-conversions {
-  margin-top: 4rem;
+  margin-top: 3rem;
 
   & h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-transform: uppercase;
     font-family: var(--ff-secondary);
     font-weight: 600;
@@ -112,7 +112,7 @@ body.theme-loaded {
   & p:nth-last-of-type(1) {
     font-weight: 500;
     margin-top: .5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 
     & span {
       color: #dc3636;
@@ -150,20 +150,25 @@ body.theme-loaded {
     gap: 1.75rem;
     margin-bottom: 5rem;
 
+    & h3 {
+      font-size: 1.5rem;
+    }
+
     & ul {
       display: flex;
       background-color: var(--bg-color-tertiary);
-      width: 90%;
+      width: 80%;
       align-items: center;
       justify-content: center;
       border-radius: 1rem;
       font-size: 1.2rem;
       font-weight: 500;
+      padding: 0 1.5rem;
 
       .delete-conversion {
         cursor: pointer;
-        margin-left: 2rem;
         transition: .3s;
+        margin-left: auto;
 
         & img {
           width: 1.5rem;
@@ -179,6 +184,7 @@ body.theme-loaded {
       & li {
         margin-block: 1.5rem;
         line-height: 1.5;
+        max-width: 95%;
       }
     }
   }
@@ -188,14 +194,17 @@ body.theme-loaded {
   #recent-conversions {
     & #list-conversions ul {
       width: 100%;
-      padding: 1.5rem;
+      padding: 1.75rem;
 
       & .delete-conversion {
-        display: none;
+        & img {
+          width: 1.75rem;
+        }
       }
 
       & li {
         margin: 0;
+        max-width: 87.5%;
       }
     }
   }

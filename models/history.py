@@ -1,3 +1,4 @@
+from sqlalchemy.sql import func
 from database import db
 
 class History(db.Model):
@@ -14,3 +15,4 @@ class History(db.Model):
   toUnitSelect = db.Column(db.String(50), nullable=True)
   firstValue = db.Column(db.Float, nullable=True)
   secondValue = db.Column(db.Float, nullable=True)
+  created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
