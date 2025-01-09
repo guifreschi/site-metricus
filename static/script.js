@@ -20,7 +20,7 @@ const simpleOperations = document.querySelectorAll('div .simple-operations')
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     document.body.classList.add('theme-loaded')
-  }, 300) 
+  }, 270) 
 })
 
 if (localStorage.getItem('light-mode') === 'enabled') {
@@ -37,7 +37,7 @@ toggleButton.addEventListener('click', () => {
 
   setTimeout(() => {
     toggleButton.classList.remove('rotate')
-  }, 500)
+  }, 750)
 
   const lightModeEnabled = body.classList.toggle('light-mode')
 
@@ -108,6 +108,7 @@ selectComplex.forEach(item => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const unitId = localStorage.getItem('unitId')
+
   if (!unitInfo) {
     console.error('Element unitInfo not found!')
     return
@@ -251,12 +252,14 @@ if (historyPage) {
   }
 }
 
-fetch('/conversion/history/data')
+const listConversion = document.getElementById('list-conversions')
+
+if (listConversion) {
+  fetch('/conversion/history/data')
 .then(response => response.json())
 .then(data => {
   console.log(data)
 
-  const listConversion = document.getElementById('list-conversions')
   const clearHistory = document.getElementById('clean-history')
   const limitedData = data.slice(0, 5)
 
@@ -334,3 +337,4 @@ fetch('/conversion/history/data')
   }).catch(error => {
     console.error('Error loading data:', error)
   })
+}
