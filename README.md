@@ -51,6 +51,30 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+<h3>Changing the Base URL</h3>
+
+By default, the project is configured to use the production URL:
+
+```javascript
+const baseURL = 'https://metricus.onrender.com';
+```
+
+If you want to run the project locally, change the `baseURL` to:
+
+```javascript
+const baseURL = 'http://localhost:5000';
+```
+
+<h3>Running the Project Locally</h3>
+
+After changing the `baseURL`, you can run the server locally:
+
+```bash
+python app.py
+```
+
+Now, the project will be available at `http://localhost:5000`.
+
 <h3>Setting Up the Database</h3>
 
 ```bash
