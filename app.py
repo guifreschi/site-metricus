@@ -51,15 +51,12 @@ def calculator_page_get():
       page = 'calculator-complex.html'
     else:
       page = 'calculator.html'
+    response = render_template(page, datas=datas)
+
+    return response
   else:
     print("Unit not found")
-    return redirect('/conversion')  
-  
-  response = render_template(page, datas=datas)
-
-  session.pop('datas', None) 
-
-  return response
+    return jsonify({'message': 'failed'}) 
 
 @app.route('/conversion/calculator', methods=["POST"])
 def calculator_page_post():

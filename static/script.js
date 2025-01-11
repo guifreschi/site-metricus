@@ -1,4 +1,5 @@
-const baseURL = 'https://metricus.onrender.com' // change here
+// const baseURL = 'https://metricus.onrender.com' // change here
+const baseURL = 'http://127.0.0.1:5000' // change here
 const body = document.body
 const toggleButton = document.getElementById('light-mode-toggle')
 const switchButton = document.querySelector('#switch')
@@ -20,7 +21,7 @@ const simpleOperations = document.querySelectorAll('div .simple-operations')
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     document.body.classList.add('theme-loaded')
-  }, 270) 
+  }, 250) 
 })
 
 if (localStorage.getItem('light-mode') === 'enabled') {
@@ -89,21 +90,33 @@ inputFields.forEach(input => {
   input.addEventListener('input', preventNegativeValues)
 })
 
+let isNavigating = false
+
 selectSimple.forEach(item => {
-  item.onclick = () => {
+  const navigate = () => {
+    if (isNavigating) return
+    isNavigating = true
+
     console.log(item.id)
     localStorage.setItem('unitId', item.id)
-    window.location.href = `${baseURL}/conversion/calculator`
   }
+
+  item.onclick = navigate
+  item.addEventListener('touchstart', navigate)
 })
 
 selectComplex.forEach(item => {
-  item.onclick = () => {
+  const navigate = () => {
+    if (isNavigating) return
+    isNavigating = true
+
     const unitName = item.id.replace('-', ' ')
     console.log(unitName)
     localStorage.setItem('unitId', unitName)
-    window.location.href = `${baseURL}/conversion/calculator`
   }
+
+  item.onclick = navigate
+  item.addEventListener('touchstart', navigate)
 })
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -149,7 +162,7 @@ document.querySelectorAll('li').forEach(item => {
       .then(data => {
         if (data.status === 'success') {
           console.log('Data successfully received')
-          window.location.href = `/conversion/calculator?unit=${clickedId}`
+          window.location.href = `${baseURL}/conversion/calculator`
         }
       })
       .catch(error => console.error('Error:', error))
