@@ -206,9 +206,11 @@ def clear_history():
     db.session.rollback()
     return jsonify({"success": False, "message": f"Error clearing history: {str(e)}"}), 500
   
-@app.before_first_request
 def create_tables():
-  db.create_all() 
+  with app.app_context():
+    db.create_all()
+
 
 if __name__ == '__main__':
+  create_tables()
   app.run(debug=True)
