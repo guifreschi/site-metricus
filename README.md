@@ -88,6 +88,9 @@ flask shell
 
 Update the `config.py` file in the `instance` folder with your preferred values.
 
+Aqui está o README atualizado, mencionando o suporte para SQLite:
+
+```markdown
 <h3>Running the Application</h3>
 
 Start the application in development mode:
@@ -97,6 +100,8 @@ python app.py
 ```
 
 Access the app at `http://127.0.0.1:5000`.
+
+The application now supports SQLite as the database.
 
 <h3>Running with Docker</h3>
 
@@ -108,6 +113,8 @@ docker-compose up
 ```
 
 3. Access the app at `http://127.0.0.1:5000`.
+
+The application now supports SQLite as the database.
 
 To stop the application, use:
 
