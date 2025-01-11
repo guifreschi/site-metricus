@@ -1,5 +1,4 @@
-// const baseURL = 'https://metricus.onrender.com' // change here
-const baseURL = 'http://127.0.0.1:5000' // change here
+const baseURL = 'https://metricus.onrender.com' // change here
 const body = document.body
 const toggleButton = document.getElementById('light-mode-toggle')
 const switchButton = document.querySelector('#switch')
