@@ -6,7 +6,6 @@ from database import db
 from models.history import History
 import uuid
 from utilities.tasks import schedule_data_deletion
-from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.secret_key = config.SECRET_KEY
@@ -14,7 +13,6 @@ app.secret_key = config.SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI_LITE
 
 db.init_app(app)
-migrate = Migrate(app, db)
 
 @app.route('/', methods=["GET"])
 def home_page():
@@ -208,10 +206,5 @@ def clear_history():
     db.session.rollback()
     return jsonify({"success": False, "message": f"Error clearing history: {str(e)}"}), 500
   
-def create_tables():
-  with app.app_context():
-    db.create_all()
-
 if __name__ == '__main__':
-  create_tables()
   app.run(debug=True)
