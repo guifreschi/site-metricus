@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, render_template, session, redirect
 from utilities.operations import get_datas, simple_conversion, complex_conversion
-import instance.config as config
+import utilities.config as config
 from Metricus.utilities.pretty_response import PrettyResponse
 from database import db
 from models.history import History

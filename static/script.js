@@ -20,7 +20,7 @@ const simpleOperations = document.querySelectorAll('div .simple-operations')
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     document.body.classList.add('theme-loaded')
-  }, 250) 
+  }, 270) 
 })
 
 if (localStorage.getItem('light-mode') === 'enabled') {
