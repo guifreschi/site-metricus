@@ -1,0 +1,61 @@
+# Byte-compiled files
+*.pyc
+*.pyo
+__pycache__/
+
+# Python virtual environments
+venv/
+env/
+ENV/
+*.env
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.eggs/
+.eggs/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# pyenv
+.python-version
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pytest
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.hypothesis/
+
+# test and coverage
+*.log
+*.pot
+
+mytest.py
+
+metricus-site-db
