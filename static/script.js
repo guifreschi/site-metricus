@@ -363,5 +363,18 @@ if (loginForm) {
 const loginLinkButton = document.getElementById('login')
 const signUpLinkButton = document.getElementById('sign-up')
 
-loginLinkButton.onclick = () => window.location.href = `${baseURL}/login`
-signUpLinkButton.onclick = () => window.location.href = `${baseURL}/login`
+if (loginLinkButton || signUpLinkButton) {
+  loginLinkButton.onclick = () => window.location.href = `${baseURL}/login`
+  signUpLinkButton.onclick = () => window.location.href = `${baseURL}/login`
+}
+
+const metricusGUIButton = document.querySelector('#metricusgui button')
+
+metricusGUIButton.onclick = () => {
+  fetch(`${baseURL}/metricusgui`).then(response => response.json())
+  .then(data => {
+    if (!data.success) {
+      alert("It was not possible to open MetricusGUI. Error:", data.message)
+    }
+  })
+}

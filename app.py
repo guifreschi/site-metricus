@@ -6,6 +6,7 @@ from database import db
 from models.history import History
 import uuid
 from utilities.tasks import schedule_data_deletion
+from Metricus.gui import MetricusGUI
 
 app = Flask(__name__)
 app.secret_key = config.SECRET_KEY
@@ -213,6 +214,15 @@ def get_login():
 @app.route('/sign-up', methods=["GET"])
 def get_signup():
   return render_template('sign-up.html')
+
+@app.route('/metricusgui', methods=["GET"])
+def get_metricusgui():
+  try:
+    MetricusGUI()
+    return jsonify({"success": True})
+  except Exception as e:
+    print(f"Error: {e}")
+    return jsonify({"success": False, "message": str(e)})
 
 if __name__ == '__main__':
   app.run(debug=True)
