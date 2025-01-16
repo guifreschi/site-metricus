@@ -365,7 +365,7 @@ const signUpLinkButton = document.getElementById('sign-up')
 
 if (loginLinkButton || signUpLinkButton) {
   loginLinkButton.onclick = () => window.location.href = `${baseURL}/login`
-  signUpLinkButton.onclick = () => window.location.href = `${baseURL}/login`
+  signUpLinkButton.onclick = () => window.location.href = `${baseURL}/sign-up`
 }
 
 const metricusGUIButton = document.querySelector('#metricusgui button')
