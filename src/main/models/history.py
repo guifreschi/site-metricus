@@ -1,5 +1,5 @@
 from sqlalchemy.sql import func
-from database import db
+from src.main.database import db
 
 class History(db.Model):
   id = db.Column(db.Integer, primary_key=True)

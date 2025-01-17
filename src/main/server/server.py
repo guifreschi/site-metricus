@@ -1,17 +1,16 @@
 from flask import Flask, jsonify, request, render_template, session, redirect
-from utilities.operations import get_datas, simple_conversion, complex_conversion
-import utilities.config as config
+from src.utilities.operations import get_datas, simple_conversion, complex_conversion
+import src.utilities.config as config
 from Metricus.utilities.pretty_response import PrettyResponse
-from database import db
-from models.history import History
+from src.main.database import db
+from src.main.models.history import History
 import uuid
-from utilities.tasks import schedule_data_deletion
+from src.utilities.tasks import schedule_data_deletion
 from Metricus.gui import MetricusGUI
 
 app = Flask(__name__)
 app.secret_key = config.SECRET_KEY
-# app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
-app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI_LITE
+app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
 
 db.init_app(app)
 
@@ -223,6 +222,3 @@ def get_metricusgui():
   except Exception as e:
     print(f"Error: {e}")
     return jsonify({"success": False, "message": str(e)})
-
-if __name__ == '__main__':
-  app.run(debug=True)

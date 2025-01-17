@@ -1,8 +1,8 @@
 import threading
-from database import db
+from src.main.database import db
 
 def delete_user_data(user_id, db, History):
-  from app import app 
+  from src.main.server.server import app 
   with app.app_context(): 
     History.query.filter_by(user_id=user_id).delete()  
     db.session.commit()

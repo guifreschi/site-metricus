@@ -14,7 +14,7 @@
   <div class="container">
     <section id="top">
       <h1>Metricus</h1>
-      <img src="/static/assets/main-images/sun.svg" alt="Light mode" id="light-mode-toggle">
+      <img src="{{ url_for('static', filename='assets/main-images/sun.svg') }}" alt="Light mode" id="light-mode-toggle">
     </section>
 
     <a href="http://127.0.0.1:5000" class="back">Back</a>
@@ -35,6 +35,6 @@
       </form>
     </div>
   </div>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
