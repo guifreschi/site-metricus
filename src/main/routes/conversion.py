@@ -14,12 +14,12 @@ def conversion_page_get():
 def conversion_page_post():
   if 'user_id' not in session:
     session['user_id'] = str(uuid.uuid4())
+
   data = request.get_json()
-  clicked_id = data.get('clicked_id').replace('-', '_')  
+  clicked_id = data.get('clicked_id').replace('-', '_') 
+
   if clicked_id:
     datas = get_datas(checked_id=clicked_id)  
     session['datas'] = datas
     return jsonify({'status': 'success'})
-  return jsonify({'status': 'failed'})
-
-
+  return jsonify({'status': 'failed'}), 500

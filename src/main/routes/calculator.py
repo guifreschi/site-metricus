@@ -30,7 +30,7 @@ def calculator_page_post():
   data = request.get_json() 
 
   if not data:
-    return jsonify({"success": False, "message": "No data provided"})
+    return jsonify({"success": False, "message": "No data provided"}), 400
 
   simpleValue = data.get('simpleValue')
   simpleFromUnit = data.get('simpleFromUnit')
@@ -56,30 +56,30 @@ def calculator_page_post():
     firstValue = float(data.get('firstValue', '')) if data.get('firstValue') else None
     secondValue = float(data.get('secondValue', '')) if data.get('secondValue') else None
   except ValueError:
-    return jsonify({"success": False, "message": "Invalid input values"})
+    return jsonify({"success": False, "message": "Invalid input values"}), 400
 
   try:
-      if 'calculate' in unit_name:
-        result = complex_conversion(
-          unit_name, firstValue=firstValue, secondValue=secondValue, 
-          resultUnit=resultUnit, fromUnitSelect=fromUnitSelect, 
-          toUnitSelect=toUnitSelect, rounded_result=rounded_result
-        )
-        simple_conversion_type = False
-      else:
-        result = simple_conversion(
-          unit_name=unit_name, simpleValue=simpleValue, 
-          simpleFromUnit=simpleFromUnit, simpleToUnit=simpleToUnit, 
-          rounded_result=rounded_result
-        )
-        simple_conversion_type = True
+    if 'calculate' in unit_name:
+      result = complex_conversion(
+        unit_name, firstValue=firstValue, secondValue=secondValue, 
+        resultUnit=resultUnit, fromUnitSelect=fromUnitSelect, 
+        toUnitSelect=toUnitSelect, rounded_result=rounded_result
+      )
+      simple_conversion_type = False
+    else:
+      result = simple_conversion(
+        unit_name=unit_name, simpleValue=simpleValue, 
+        simpleFromUnit=simpleFromUnit, simpleToUnit=simpleToUnit, 
+        rounded_result=rounded_result
+      )
+      simple_conversion_type = True
 
   except Exception as e:
     print(f"Error during conversion: {e}")
-    return jsonify({"success": False, "message": "Conversion error"})
+    return jsonify({"success": False, "message": "Conversion error"}), 500
 
   if result is None:
-    return jsonify({"success": False, "message": "Error calculating result"})
+    return jsonify({"success": False, "message": "Unsupported conversion or invalid inputs"}), 400
 
   if simple_conversion_type:
       pretty_response = PrettyResponse.simple_string(
