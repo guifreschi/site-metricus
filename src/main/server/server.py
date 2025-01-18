@@ -7,7 +7,6 @@ from src.main.routes.calculator import calculator_bp
 from src.main.routes.history import history_bp
 from src.main.routes.login import login_bp
 from src.main.routes.sign_up import sign_up_bp
-from src.main.routes.metricusgui import metricusgui_bp
 from src.main.routes.error import error_bp
 
 app = Flask(__name__)
@@ -27,7 +26,6 @@ app.register_blueprint(calculator_bp)
 app.register_blueprint(history_bp)
 app.register_blueprint(login_bp, url_prefix='/login')
 app.register_blueprint(sign_up_bp, url_prefix='/sign-up')
-app.register_blueprint(metricusgui_bp)
 app.register_blueprint(error_bp)
 
 if __name__ == '__main__':

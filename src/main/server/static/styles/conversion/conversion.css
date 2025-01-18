@@ -319,6 +319,7 @@
 }
 
 #select {
+  margin-bottom: 6rem;
   margin-top: 4rem;
   
   & h2 {
@@ -607,7 +608,7 @@
   }  
 }
 
-#metricusgui {
+/* #metricusgui {
   margin-bottom: 6rem;
   margin-top: 4rem;
 
@@ -651,7 +652,7 @@
   #metricusgui {
     display: none;
   }
-}
+} */
 
 .gray-scale {
   filter: grayscale();
