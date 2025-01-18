@@ -87,6 +87,7 @@ export function setupSwitchButton() {
   if (switchButton) {
     switchButton.onclick = () => {
       circle.classList.toggle('circle-animation')
+      switchButton.classList.toggle('gray-scale')
       
       if (circle.classList.contains('rounded-result-true')) {
         circle.classList.remove('rounded-result-true')

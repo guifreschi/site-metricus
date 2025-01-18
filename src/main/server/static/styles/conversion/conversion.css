@@ -652,3 +652,7 @@
     display: none;
   }
 }
+
+.gray-scale {
+  filter: grayscale();
+}
