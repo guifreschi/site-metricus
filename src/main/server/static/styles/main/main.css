@@ -717,7 +717,8 @@ body.theme-loaded {
   font-weight: 500;
   gap: 0 1.5rem;
 
-  & #login {
+  & #login,
+  & #logout {
     cursor: pointer;
     margin-left: 1.5rem;
     transition: .2s;

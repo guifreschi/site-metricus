@@ -3,6 +3,7 @@ export function setupNavigation(baseURL) {
   const backHome = document.querySelector('#back-home')
   const historyPage = document.querySelector('#history')
   const backConversion = document.getElementById('back-conversion')
+  
 
   if (back) {
     back.onclick = () => window.location.href = `${baseURL}/conversion`
@@ -37,7 +38,11 @@ export function setupLogin(baseURL) {
   const signUpLinkButton = document.getElementById('sign-up')
   
   if (loginLinkButton || signUpLinkButton) {
-    loginLinkButton.onclick = () => window.location.href = `${baseURL}/login`
-    signUpLinkButton.onclick = () => window.location.href = `${baseURL}/sign-up`
+    loginLinkButton.onclick = () => {
+      window.location.href = `${baseURL}/login`
+    } 
+    signUpLinkButton.onclick = () => {
+      window.location.href = `${baseURL}/sign-up`
+    } 
   }
 }

@@ -3,8 +3,8 @@ from src.utilities.operations import simple_conversion, complex_conversion
 from src.main.database import db
 from src.main.models.history import History
 from Metricus.utilities.pretty_response import PrettyResponse
-import uuid
 from src.utilities.tasks import schedule_data_deletion
+from flask_login import current_user
 
 calculator_bp = Blueprint('calculator', __name__)
 
@@ -41,11 +41,6 @@ def calculator_page_post():
   toUnitSelect = data.get('toUnitSelect')
   rounded_result = None
 
-  if 'user_id' not in session:
-    session['user_id'] = str(uuid.uuid4())
-  
-  schedule_data_deletion(session['user_id'], db, History)
-
   if any('rounded-result-true' in sublist for sublist in data.get('roundedResult', [])):
     rounded_result = True
   else:
@@ -81,30 +76,31 @@ def calculator_page_post():
   if result is None:
     return jsonify({"success": False, "message": "Unsupported conversion or invalid inputs"}), 400
 
-  if simple_conversion_type:
+  if current_user.is_authenticated:
+    if simple_conversion_type:
       pretty_response = PrettyResponse.simple_string(
         value=simpleValue, from_unit=simpleFromUnit, to_unit=simpleToUnit, 
         result=result, rounded_result=rounded_result
       )
-  else:
+    else:
       pretty_response = PrettyResponse.complex_string(
         first_value=firstValue, first_unit=fromUnitSelect, 
         second_value=secondValue, second_unit=toUnitSelect, 
         result=result, rounded_result=rounded_result
       )
 
-  print(pretty_response)
+    user_id = current_user.get_id()
 
-  history = History(
-    message=pretty_response, simpleValue=simpleValue, 
-    simpleFromUnit=simpleFromUnit, simpleToUnit=simpleToUnit, 
-    unit_name=unit_name, rounded_result=rounded_result, 
-    resultUnit=resultUnit, fromUnitSelect=fromUnitSelect, 
-    toUnitSelect=toUnitSelect, firstValue=firstValue, secondValue=secondValue,
-    user_id=session['user_id']
-  )
+    history = History(
+      message=pretty_response, simpleValue=simpleValue, 
+      simpleFromUnit=simpleFromUnit, simpleToUnit=simpleToUnit, 
+      unit_name=unit_name, rounded_result=rounded_result, 
+      resultUnit=resultUnit, fromUnitSelect=fromUnitSelect, 
+      toUnitSelect=toUnitSelect, firstValue=firstValue, secondValue=secondValue,
+      user_id=user_id
+    )
 
-  db.session.add(history)
-  db.session.commit()
+    db.session.add(history)
+    db.session.commit()
 
   return jsonify({"success": True, "message": str(result)})

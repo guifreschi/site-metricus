@@ -1,22 +1,21 @@
 from flask import Blueprint, render_template, request, jsonify, session
 from src.main.database import db
 from src.main.models.history import History
-import uuid
+from flask_login import login_required, current_user
 
 history_bp = Blueprint('history', __name__)
 
 @history_bp.route('/conversion/history', methods=["GET"])
+@login_required
 def history_page():
   return render_template('history.html')
 
 @history_bp.route('/conversion/history/data', methods=["GET"])
+@login_required
 def get_data():
-  user_id = session['user_id']
+  user_id = current_user.get_id()
 
-  if 'user_id' not in session:
-    session['user_id'] = str(uuid.uuid4())
-
-  history_items = History.query.filter_by(user_id=user_id).order_by(History.created_at.desc()).limit(5).all()
+  history_items = History.query.filter_by(user_id=user_id).order_by(History.created_at.desc()).limit(50).all()
 
   data = [
     {
@@ -31,9 +30,11 @@ def get_data():
   return jsonify(data)
 
 
-@history_bp.route('/conversion/history/delete', methods=["POST"])
+@history_bp.route('/conversion/history/delete', methods=["DELETE"])
+@login_required
 def delete_history_item():
   data = request.get_json()
+  user_id = current_user.get_id()
 
   if not data or 'id' not in data:
     return jsonify({"success": False, "message": "ID not provided"}), 400
@@ -43,7 +44,7 @@ def delete_history_item():
   if not history_item:
     return jsonify({"success": False, "message": "Item not found"}), 404
   
-  if history_item.user_id != session.get('user_id'):
+  if history_item.user_id != user_id:
     return jsonify({"success": False, "message": "Unauthorized"}), 403
   
   try:
@@ -54,13 +55,10 @@ def delete_history_item():
     db.session.rollback()
     return jsonify({"success": False, "message": f"Error deleting item: {str(e)}"}), 500
 
-@history_bp.route('/conversion/history/clear', methods=["POST"])
+@history_bp.route('/conversion/history/clear', methods=["DELETE"])
+@login_required
 def clear_history():
-  if 'user_id' not in session:
-    session['user_id'] = str(uuid.uuid4())
-
-  user_id = session.get('user_id')
-
+  user_id = current_user.get_id()
   try:
     History.query.filter_by(user_id=user_id).delete()
     db.session.commit()

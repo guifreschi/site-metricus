@@ -46,7 +46,7 @@ export function setupHistory() {
   const deleteItem = async (id, ul) => {
     try {
       const response = await fetch('/conversion/history/delete', {
-        method: 'POST',
+        method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -77,7 +77,7 @@ export function setupHistory() {
 
       try {
         const response = await fetch('/conversion/history/clear', {
-          method: 'POST',
+          method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'
           }

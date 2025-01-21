@@ -164,6 +164,25 @@ body.theme-loaded {
       }
     }
 
+    .error-message {
+      display: flex;
+      color: #dc3636;
+      font-weight: 600;
+      font-size: .9rem;
+      align-items: center;
+      justify-content: center;
+      gap: .25rem;
+      margin-bottom: 1.5rem;
+
+      & img {
+        width: 1rem;
+      }
+
+      &.display-none {
+        display: none;
+      }
+    }
+
     button {
       width: 100%;
       padding: 0.75rem;

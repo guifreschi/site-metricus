@@ -3,7 +3,7 @@ from src.main.database import db
 
 class History(db.Model):
   id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.String(64))
+  user_id = db.Column(db.String(36), db.ForeignKey('users.user_id', ondelete='CASCADE'), nullable=False)
   message = db.Column(db.String(155), nullable=False)
   simpleValue = db.Column(db.Float, nullable=True)
   simpleFromUnit = db.Column(db.String(50), nullable=True)

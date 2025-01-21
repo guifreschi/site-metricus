@@ -7,6 +7,8 @@ import { setupHistory } from './events/history.js'
 import { setupCalculator } from './events/calculator.js'
 import { setupForms, setupUnitID } from './events/formHandlers.js'
 import { setupNavigation, setupStartConversions, setupLogin } from './events/navigation.js'
+import { setupAuth } from './events/loginSignUp.js'
+import { setUpLogout } from './events/logout.js'
 
 const calculateButton = document.querySelector('#calculate-operation')
 
@@ -25,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Configure login and sign-up handlers with the base URL for requests
   setupLogin(baseURL)
+  setupAuth()
+  setUpLogout()
 
   // Configure the button to start conversions with the base URL
   setupStartConversions(baseURL)

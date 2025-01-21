@@ -8,17 +8,25 @@ from src.main.routes.history import history_bp
 from src.main.routes.login import login_bp
 from src.main.routes.sign_up import sign_up_bp
 from src.main.routes.error import error_bp
+from src.main.models.user import User
+from flask_login import LoginManager
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 
+login_manager = LoginManager()
+login_manager.init_app(app)
 db.init_app(app)
+
+login_manager.login_view = 'login.login'
+
+@login_manager.user_loader
+def load_user(user_id):
+  return User.query.get(user_id)
 
 @app.route('/', methods=["GET"])
 def home_page():
-  if 'user_id' not in session:
-    session['user_id'] = str(uuid.uuid4())
   return render_template('index.html')
 
 app.register_blueprint(conversion_bp)
