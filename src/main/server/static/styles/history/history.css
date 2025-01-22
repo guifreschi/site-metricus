@@ -188,8 +188,13 @@ body.theme-loaded {
       margin: 0 0.3125rem; 
       padding: 0.3125rem 0.625rem; 
       border: 1px solid #ccc;
+      border-radius: .25rem;
       background-color: #f9f9f9;
       cursor: pointer;
+
+      &:hover {
+        scale: 1.05;
+      }
   
       &.active {
         background-color: var(--brand-color);

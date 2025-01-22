@@ -3,7 +3,7 @@
 import { baseURL } from './config.js'
 import { setupThemeToggle } from './events/themeToggle.js'
 import { addInputListeners } from './utils-js/domUtils.js'
-import { setupHistory } from './events/history.js'
+import { loadHistory } from './events/history.js'
 import { setupCalculator } from './events/calculator.js'
 import { setupForms, setupUnitID } from './events/formHandlers.js'
 import { setupNavigation, setupStartConversions, setupLogin } from './events/navigation.js'
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   addInputListeners(inputFields)
 
   // Initialize the history page if the user navigates to it
-  setupHistory()
+  loadHistory()
 
   // Configure calculator functionality if the calculate button is available
   if (calculateButton) {

@@ -728,10 +728,6 @@ body.theme-loaded {
     }
   }
 
-  & #logout {
-    font-size: 99%;
-  }
-
   & #sign-up {
     display: flex;
     background-color: var(--brand-color);
@@ -752,6 +748,9 @@ body.theme-loaded {
 }
 
 @media (max-width: 79.8em) {
+  #login-section #logout {
+    font-size: 85%;
+  }
 
   #login-section #sign-up {
     padding: .25rem 1.35rem;
