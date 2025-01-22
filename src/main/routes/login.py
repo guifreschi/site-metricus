@@ -29,4 +29,4 @@ def login():
 @login_required
 def logout():
   logout_user()
-  return jsonify({"message": "Logout completed successfully1"})
+  return jsonify({"message": "Logout completed successfully!"})

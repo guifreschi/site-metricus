@@ -75,7 +75,7 @@ function login() {
 
       if (response.ok) {
         window.location.href = "/"
-        let success = true
+        localStorage.setItem('isAuthenticated', 'true')
       } else if (result.message === 'Invalid credentials.') {
         showErrorMessage(result.message)
       } else {
@@ -94,17 +94,3 @@ export function setupAuth() {
   if (signupForm) signUp()
   if (loginForm) login()
 }
-
-function logoutButton() {
-  const login = document.querySelector('#login')
-  if (login) {
-    login.classList.add('display-none')
-  }
-
-  const logout = document.querySelector('#logout')
-  if (logout) {
-    logout.classList.remove('display-none')
-  }
-} 
-
-logoutButton()

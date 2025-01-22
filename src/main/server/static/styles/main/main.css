@@ -728,6 +728,10 @@ body.theme-loaded {
     }
   }
 
+  & #logout {
+    font-size: 99%;
+  }
+
   & #sign-up {
     display: flex;
     background-color: var(--brand-color);

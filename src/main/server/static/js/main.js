@@ -9,6 +9,7 @@ import { setupForms, setupUnitID } from './events/formHandlers.js'
 import { setupNavigation, setupStartConversions, setupLogin } from './events/navigation.js'
 import { setupAuth } from './events/loginSignUp.js'
 import { setUpLogout } from './events/logout.js'
+import { loginButton, logoutButton } from './utils-js/loginOutButtons.js'
 
 const calculateButton = document.querySelector('#calculate-operation')
 
@@ -29,6 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
   setupLogin(baseURL)
   setupAuth()
   setUpLogout()
+
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
+  if (isAuthenticated) {
+    logoutButton()
+  } else loginButton()
 
   // Configure the button to start conversions with the base URL
   setupStartConversions(baseURL)
