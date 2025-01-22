@@ -1,5 +1,4 @@
-from flask import Flask, render_template, session
-import uuid
+from flask import Flask, render_template
 from src.utilities.config import SECRET_KEY, SQLALCHEMY_DATABASE_URI
 from src.main.database import db
 from src.main.routes.conversion import conversion_bp

@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, jsonify, session
 from src.main.database import db
 from src.main.models.history import History
 from flask_login import login_required, current_user
+from src.utilities.tasks import remove_old_items
 
 history_bp = Blueprint('history', __name__)
 
@@ -13,22 +14,32 @@ def history_page():
 @history_bp.route('/conversion/history/data', methods=["GET"])
 @login_required
 def get_data():
-  user_id = current_user.get_id()
+    user_id = current_user.get_id()
+    page = request.args.get('page', 1, type=int)  
+    per_page = request.args.get('limit', 7, type=int)  
 
-  history_items = History.query.filter_by(user_id=user_id).order_by(History.created_at.desc()).limit(50).all()
+    remove_old_items(user_id, limit=42)
 
-  data = [
-    {
-      "id": item.id,
-      "message": item.message,
-      "user_id": item.user_id,
-      "created_at": item.created_at.strftime('%Y-%m-%d %H:%M:%S')
-    }
-    for item in history_items
-  ]
+    history_query = History.query.filter_by(user_id=user_id).order_by(History.created_at.desc())
+    total_items = history_query.count()
+    history_items = history_query.offset((page - 1) * per_page).limit(per_page).all()
 
-  return jsonify(data)
+    data = [
+        {
+            "id": item.id,
+            "message": item.message,
+            "user_id": item.user_id,
+            "created_at": item.created_at.strftime('%Y-%m-%d %H:%M:%S')
+        }
+        for item in history_items
+    ]
 
+    return jsonify({
+        "data": data,
+        "total_items": total_items,
+        "page": page,
+        "total_pages": (total_items + per_page - 1) // per_page
+    })
 
 @history_bp.route('/conversion/history/delete', methods=["DELETE"])
 @login_required

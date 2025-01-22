@@ -1,23 +1,28 @@
+const noConversion = document.getElementById('no-conversion')
+
 export function setupHistory() {
   const listConversion = document.getElementById('list-conversions')
 
   if (!listConversion) return
 
-  const loadHistory = async () => {
+  const loadHistory = async (page = 1, limit = 7) => {
     try {
-      const response = await fetch('/conversion/history/data')
-      const data = await response.json()
-      console.log(data)
-
+      const response = await fetch(`/conversion/history/data?page=${page}&limit=${limit}`)
+      const result = await response.json()
+  
+      const { data, total_pages } = result
+  
       if (data.length > 0) {
-        renderHistory(data.slice(0, 5))
+        listConversion.innerHTML = ''
+        renderHistory(data)
+        renderPagination(page, total_pages)
       } else {
         displayNoConversionMessage()
       }
     } catch (error) {
       console.error('Error loading data:', error)
     }
-  }
+  }  
 
   const renderHistory = (data) => {
     data.forEach((item) => {
@@ -41,6 +46,21 @@ export function setupHistory() {
     })
 
     setupClearHistory()
+  }
+
+  const renderPagination = (currentPage, totalPages) => {
+    const paginationContainer = document.getElementById('pagination')
+    paginationContainer.innerHTML = '' 
+  
+    for (let i = 1; i <= totalPages; i++) {
+      const pageButton = document.createElement('button')
+      pageButton.textContent = i
+      pageButton.classList.add('pagination-button')
+      if (i === currentPage) pageButton.classList.add('active')
+  
+      pageButton.onclick = () => loadHistory(i)
+      paginationContainer.appendChild(pageButton)
+    }
   }
 
   const deleteItem = async (id, ul) => {
@@ -86,6 +106,8 @@ export function setupHistory() {
         const result = await response.json()
 
         if (result.success) {
+          const paginationContainer = document.getElementById('pagination')
+          paginationContainer.innerHTML = ''
           listConversion.innerHTML = ''
         } else {
           console.error('Error clearing history:', result.message)
@@ -97,7 +119,6 @@ export function setupHistory() {
   }
 
   const displayNoConversionMessage = () => {
-    const noConversion = document.getElementById('no-conversion')
     if (noConversion) noConversion.classList.remove('display-none')
   }
 

@@ -3,7 +3,6 @@ from src.utilities.operations import simple_conversion, complex_conversion
 from src.main.database import db
 from src.main.models.history import History
 from Metricus.utilities.pretty_response import PrettyResponse
-from src.utilities.tasks import schedule_data_deletion
 from flask_login import current_user
 
 calculator_bp = Blueprint('calculator', __name__)

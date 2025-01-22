@@ -109,17 +109,6 @@ body.theme-loaded {
     font-weight: 600;
   }
 
-  & p:nth-last-of-type(1) {
-    font-weight: 500;
-    margin-top: .5rem;
-    margin-bottom: 1.5rem;
-
-    & span {
-      color: #dc3636;
-      font-weight: 500;
-    }
-  }
-
   & #clean-history-div {
     font-size: 1rem;
     text-transform: uppercase;
@@ -148,7 +137,7 @@ body.theme-loaded {
     display: flex;
     flex-direction: column;
     gap: 1.75rem;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
 
     & h3 {
       font-size: 1.5rem;
@@ -188,6 +177,29 @@ body.theme-loaded {
       }
     }
   }
+
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+    margin-bottom: 5rem; 
+  
+    & .pagination-button {
+      margin: 0 0.3125rem; 
+      padding: 0.3125rem 0.625rem; 
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      cursor: pointer;
+  
+      &.active {
+        background-color: var(--brand-color);
+        color: white;
+        border-color: var(--brand-color);
+      }
+    }
+  }
+  
+  
 }
 
 @media (max-width: 79.8em) {

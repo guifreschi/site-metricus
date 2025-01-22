@@ -20,17 +20,16 @@
       <p>Back</p>
     </div>
     <section id="recent-conversions">
-      <h2>Recent conversions</h2>
-      <p>The history will be deleted within <span>15 minutes</span></p>
+      <h2>Your Recent conversions</h2>
       <div id="clean-history-div">
         <img src="{{ url_for('static', filename='assets/main-images/warning-clear.svg') }}" alt="Clean history warning">
         <p id="clean-history">Clean History</p>
       </div>
 
       <div id="list-conversions">
-        <h3 style="text-transform: uppercase;">Your recent conversions:</h3>
         <p id="no-conversion" class="display-none">No conversions found...</p>
       </div>
+      <div id="pagination" class="pagination-container"></div>
     </section>
   </div>
   <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>

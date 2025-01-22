@@ -34,10 +34,12 @@ function signUp() {
         body: JSON.stringify(data)
       })
 
+      const result = await response.json()
+
       if (response.ok) {
         window.location.href = "/login"
       } else {
-        showErrorMessage('Something went wrong! Try again later.')
+        showErrorMessage(result.message)
       }
     } catch (error) {
       showErrorMessage('Error connecting to the server.')
