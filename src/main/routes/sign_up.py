@@ -34,6 +34,6 @@ def post_signup():
     db.session.add(user)
     db.session.commit()
   except Exception as e:
-    return jsonify({"message": f"Database error: {str(e)}"}), 500
+    return jsonify({"message": f"Username is already taken.", "exception": str(e)}), 500
 
   return jsonify({"message": "User created successfully."}), 201
