@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metricus</title>
+  <link rel="icon" href="{{ url_for('static', filename='assets/main-images/logo-metricus.svg') }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main/main.css') }}">
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">
+      <a href="https://github.com/guifreschi/Metricus" target="_blank">Metricus</a>
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <img src="{{ url_for('static', filename='assets/main-images/sun.svg') }}" alt="Light mode" id="light-mode-toggle">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div id="login-section">
+        <div id="login">
+          <p>Login</p>
+        </div>
+        <div id="logout" class="display-none">
+          <p>Logout</p>
+        </div>
+        <div id="sign-up">
+          <p>Sign Up</p>
+        </div>
+      </div>
+    </nav>
+    
+    </div>
+  </header>
+  <section id="home" class="home-section container">
+    <h1>Welcome to <span class="animated-text">Metricus</span></h1>
+    <div id="infos">
+      <p>ONLINE - FREE</p>
+      <p>Precision in every conversion</p>
+      <p>Supported units:</p>
+      <ul>
+        <li>Acceleration</li>
+        <li>Area</li>
+        <li>Energy</li>
+        <li>Force</li>
+        <li>Length</li>
+        <li>Mass</li>
+        <li>Pressure</li>
+        <li>Speed</li>
+        <li>Temperature</li>
+        <li>Time</li>
+        <li>Volume</li>
+        <li>Complex Conversions</li>
+      </ul>
+    </div>    
+    <div id="start">
+      <h3>🔄 <span>Ready to Convert?</span></h3>
+      <p>Start converting with a click!</p>
+      <button>🚀 Start Your Conversion</button>
+    </div>            
+  </section>
+  <section id="about" class="container-secondary">
+    <div id="metricus-info">
+      <p>What makes Metricus <span>unique?</span></p>
+      <p><span>Metricus</span> is an innovative tool designed to simplify your unit conversions.</p>
+      <p>Whether it's <span>acceleration</span>, <span>force</span>, <span>temperature</span>, or <span>speed</span>, Metricus provides reliable and precise results, empowering you to tackle any measurement challenge with <span>confidence</span>.</p>
+
+      <p>Why use Metricus?</p>
+      <p><span>Metricus</span> simplifies conversions with precision and ease, saving time for students, engineers, and anyone needing reliable results.</p>
+      <p>Converting units with Metricus is <span>effortless</span>. Access <span>multiple units</span> in just a few clicks, making <span>complex calculations</span> quick and simple.</p>
+
+      <p>What if conversions were this easy?</p>
+      <p>Metricus isn't just a tool—it's a <span>simple</span>, powerful solution that saves you time and energy, letting you focus on what really matters. With just a few clicks, get <span>precise</span> results in an instant, and make every <span>measurement</span> task easier than ever.</p>
+    </div>
+
+    <div id="creators">
+      <h3>Who created <span>Metricus?</span></h3>
+      <p>
+        Metricus is a project developed by <span> <a href="https://github.com/guifreschi" target="_blank">Guilherme Freschi</a></span> and<span> <a href="https://github.com/YaronBuchler" target="_blank">Yaron Buchler</a></span>, aspiring full-stack developers with experience in <span>Python</span>, <span>Flask</span>, and <span>APIs</span>. <br>The project was created as part of ongoing learning in web development and metric conversions.
+      </p>
+      <p>Guilherme Freschi</p>
+      <a href="https://github.com/guifreschi" target="_blank"><img src="https://avatars.githubusercontent.com/u/181294670?v=4" alt="Image of Guilherme Freschi"></a>
+      <p>Yaron Buchler</p>
+      <a href="https://github.com/YaronBuchler" target="_blank"><img src="{{ url_for('static', filename='assets/main-images/yaron.jpeg') }}" alt="Image of Yaron Buchler"></a>
+    </div>
+  </section>
+  <footer id="contact" class="main-footer">
+    <div class="footer-container">
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:guilhermefreschix@gmail">guilhermefreschix@gmail.com</a></p>
+        <p>Mobile: <a href="https://wa.me/5514996076693?text=Olá,%20gostaria%20de%20saber%20mais%20informações!" target="_blank">Contact me on WhatsApp</a></p>
+        <div id="social-links">
+          <a href="https://github.com/guifreschi" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
+          <a href="https://www.instagram.com/guifreschi" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
+          <a href="https://www.linkedin.com/in/guilherme-freschi-aa5387222/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom footer-container">
+      <p>&copy; 2024 Metricus. Licensed under the MIT License.</p>
+    </div>
+  </footer>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

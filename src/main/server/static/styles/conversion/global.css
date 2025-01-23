@@ -1,0 +1,98 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+:root {
+  --text-color: #d4d4d8;
+  --text-color-secondary: #bab8b3;
+  --text-color-tertiary: #dfd9cd;
+  --brand-color: #7d5ba6;
+  --link-color: #ccccd9;
+  --link-hover: #55357b;
+  --bg-color: #10101f;
+  --bg-color-secondary: #121217;
+  --bg-color-secondary-scroll: #17171c;
+  --bg-color-tertiary: #1f1f2d;
+  --ff-secondary: "Poppins", sans-serif;
+  --scrollbar-thumb-hover: #0b0b0c;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  margin-inline: 8rem;
+}
+
+.container-secondary {
+  margin-inline: 4rem;
+}
+
+ul {
+  list-style: none;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+
+@media (max-width: 79.8em) {
+  html {
+    font-size: 85%;
+  }
+  .container {
+    margin-inline: 12rem;
+  }
+  .container-secondary {
+    margin-inline: 12rem;
+  }
+}
+
+.light-mode {
+  --text-color: #2c2c2c;
+  --text-color-secondary: #4f4d4d;
+  --text-color-tertiary: #2c2c2c;
+  --brand-color: #5a3ea6;
+  --link-color: #3b5998; 
+  --link-hover: #3c1e7b;
+  --bg-color: #ffffff;
+  --bg-color-secondary: #f2f2f2;
+  --bg-color-secondary-scroll: #e6e6e6;
+  --bg-color-tertiary: #cacaca;
+  --scrollbar-thumb-hover: rgb(70, 70, 70);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#light-mode-toggle {
+  transition: transform 0.5s ease;
+}
+
+#light-mode-toggle.rotate {
+  transform: rotate(360deg);
+}
+
+.display-none {
+  display: none;
+}
+
+body {
+  visibility: hidden; 
+  opacity: 0; 
+  transition: opacity 0.2s ease, background-color 0.2s ease; 
+}
+
+body.theme-loaded {
+  visibility: visible;
+  opacity: 1;
+}
