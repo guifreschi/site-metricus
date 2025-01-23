@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metricus</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/errors/error.css') }}">
+</head>
+<body class="theme-loaded">
+  <div class="error-container">
+    <div class="construction-image">
+      <img src="{{ url_for('static', filename='assets/main-images/yellow-warning.svg') }}" alt="warning image">
+    </div>
+      <div class="error-content">
+          <h1 class="error-code">404</h1>
+          <p class="error-message">Oops! The page you are looking for could not be found.</p>
+          <a href="/" class="home-link">Go back to the homepage</a>
+      </div>
+  </div>
+  <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
