@@ -281,6 +281,7 @@ img {
 }
 
 .main-footer {
+  user-select: none;
   background-color: var(--bg-color-tertiary);
   color: var(--text-color);
   padding: 2rem 0;
@@ -419,6 +420,7 @@ img {
 }
 
 .main-header {
+  user-select: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -519,6 +521,7 @@ img {
     font-size: 2rem;
     grid-area: a;
     margin-bottom: 2rem;
+    user-select: none;
 
     & .animated-text {
       display: inline-block;
@@ -534,6 +537,7 @@ img {
 
   & #infos {
     grid-area: b;
+    user-select: none;
 
     & p:nth-of-type(1) {
       font-size: 0.75rem;
@@ -560,6 +564,7 @@ img {
     }
 
     & ul {
+      user-select: text;
       width: 14rem;
       margin-top: 0.75rem;
       padding: 0;
@@ -602,6 +607,7 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    user-select: none;
 
     & h3 span {
       background: linear-gradient(to right, var(--text-color), var(--text-color-secondary));
