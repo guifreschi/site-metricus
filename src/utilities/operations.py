@@ -1,4 +1,5 @@
-from Metricus import *
+from Metricus.operations import *
+from Metricus.operations.complex_operations import *
 from Metricus.utilities import *
 from src.utilities.list_units import *
 
