@@ -35,5 +35,5 @@ app.register_blueprint(login_bp, url_prefix='/login')
 app.register_blueprint(sign_up_bp, url_prefix='/sign-up')
 app.register_blueprint(error_bp)
 
-if __name__ == '__main__':
-  app.run(debug=True)
+with app.app_context():
+  db.create_all()
