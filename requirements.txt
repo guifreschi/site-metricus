@@ -8,3 +8,4 @@ Flask-Login==0.6.2
 cryptography==42.0.0
 werkzeug==2.3.7
 bcrypt
+mysqlclient
