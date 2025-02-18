@@ -1,155 +1,149 @@
-[JAVASCRIPT__BADGE]: https://img.shields.io/badge/Javascript-000?style=for-the-badge&logo=javascript
-[MY__SQL]: https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white
+# Metricus Site
 
-<h1 align="center" style="font-weight: bold;">Site Metricus 💻</h1>
-
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
-![javascript][JAVASCRIPT__BADGE]
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![mysql][MY__SQL]
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+&#x20;   &#x20;
 
 <p align="center">
- <a href="#getting-started">Getting Started</a> •
-  <a href="#features">Features</a> •
- <a href="#colab">Colab</a> •
- <a href="#contribute">Contribute</a>
+ <a href="#🌍-about-the-project">About</a> •
+ <a href="#✨-features">Features</a> •
+ <a href="#📌-api-endpoints">API Endpoints</a> •
+ <a href="#🛠-technologies-used">Technologies</a>
 </p>
 
-<p align="center">
-  <b>Site Metricus is a Flask-based web application designed for performing unit conversions with ease. It includes session management, history tracking, and supports Docker for simplified deployment.</b>
-</p>
+## 🌍 About the Project
 
-<h2 id="getting-started">🚀 Getting Started</h2>
+This project is a web-based conversion tool that allows users to convert various units efficiently. The website is live and accessible to the public, with no need for local installation.
 
-<h3>Prerequisites</h3>
+**Live Website:** https://metricus-55e35472726a.herokuapp.com
 
-- Python 3.8+
-- Flask
-- SQLAlchemy
-- Required dependencies listed in `requirements.txt`
+## ✨ Features
 
-<h3>Cloning the Repository</h3>
+- Fast and accurate unit conversions
+- Intuitive and user-friendly interface
+- Supports multiple unit types
+- History of conversions for logged-in users
 
-```bash
-git clone https://github.com/guifreschi/site-metricus.git
-cd site-metricus
+## 📌 API Endpoints
+
+This project also provides an API with multiple endpoints for unit conversion.
+
+### 🔄 **Unit Conversion Routes**
+
+These endpoints handle unit conversion requests.
+
+| Route                       | Description                                                                             |
+| --------------------------- | --------------------------------------------------------------------------------------- |
+| GET /conversion             | Retrieve available conversion units                                                     |
+| POST /conversion            | Send the clicked unit ID to update the UI and navigate to the calculator                |
+| GET /conversion/calculator  | Load the unit conversion calculator based on the previously selected unit               |
+| POST /conversion/calculator | Receives user input values and performs the unit conversion based on the provided data. |
+
+### Example Usage
+
+**POST /conversion/calculator**
+
+```json
+{
+  "simpleValue": 1000,
+  "simpleFromUnit": "meter",
+  "simpleToUnit": "kilometer",
+  "unitName": "length"
+}
 ```
 
-<h3>Setting Up the Virtual Environment</h3>
+**Response:**
 
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+```json
+{
+    "message": "1 km",
+    "success": true
+}
 ```
 
-<h3>Installing Dependencies</h3>
+---
 
-```bash
-pip install -r requirements.txt
+### 🔒 **User Authentication Routes**
+
+These endpoints manage user authentication (login, sign-up).
+
+| Route             | Description               |
+| ----------------- | ------------------------- |
+| POST /sign-up     | Register a new user.      |
+| POST /login       | Log in an existing user.  |
+| POST /auth/logout | Log out the current user. |
+
+### Example Usage
+
+**POST /sign-up**
+
+```json
+{
+  "username": "Test",
+  "password": "123456"
+}
 ```
 
-<h3>Changing the Base URL</h3>
+**Response:**
 
-By default, the project is configured to use the production URL:
-
-```javascript
-const baseURL = 'https://metricus.onrender.com';
+```json
+{
+  "message": "User created successfully."
+}
 ```
 
-If you want to run the project locally, change the `baseURL` to:
+**POST /login**
 
-```javascript
-const baseURL = 'http://localhost:5000';
+```json
+{
+  "username": "Test",
+  "password": "123456"
+}
 ```
 
-<h3>Running the Project Locally</h3>
+**Response:**
 
-After changing the `baseURL`, you can run the server locally:
-
-```bash
-python app.py
+```json
+{
+  "message": "Authentication completed successfully!"
+}
 ```
 
-Now, the project will be available at `http://localhost:5000`.
+---
 
-<h3>Setting Up the Database</h3>
+### 📝 **History Routes**
 
-```bash
-flask shell
->>> db.create_all()
->>> db.session.commit()
->>> exit()
+| Route                          | Description                                       |
+|--------------------------------|---------------------------------------------------|
+| GET /conversion/history        | Serves the history page (HTML template).         |
+| GET /conversion/history/data   | Retrieves paginated conversion history.          |
+| DELETE /conversion/history/delete | Deletes a specific conversion entry by ID.    |
+| DELETE /conversion/history/clear  | Clears all conversion history for the user. |
+
+### Example Usage
+
+**GET /conversion/history/data**
+
+**Response:**
+
+```json
+{
+  "data": [],
+  "page": 1,
+  "total_items": 0,
+  "total_pages": 0
+}
 ```
 
-<h3>Configuring the Application</h3>
+---
 
-Update the `config.py` file in the `instance` folder with your preferred values.
+## 🛠 Technologies Used
 
-Aqui está o README atualizado, mencionando o suporte para SQLite:
+- **Python** - Used for backend development, handling the core business logic and unit conversions with the Metricus library.
+- **Flask** - Lightweight web framework used to build the API and serve the web application.
+- **JavaScript** - Essential for frontend interactivity, making the user interface dynamic and responsive.
+- **CSS** - Responsible for the styling and layout of the website, ensuring a user-friendly and visually appealing experience.
+- **HTML** - The foundation of the webpage structure, defining the content and elements of the web pages.
+- **MySQL** - Relational database used to store **users, conversion history, and other relevant data**.
+- **Heroku** - Platform-as-a-Service (PaaS) used for hosting the application, making it accessible online with easy deployment and scaling.
+- **Railway** - A cloud platform for deploying applications, providing a simple and efficient way to manage infrastructure, deploy updates, and handle database connections.
 
-```markdown
-<h3>Running the Application</h3>
-
-Start the application in development mode:
-
-```bash
-python app.py
-```
-
-Access the app at `http://127.0.0.1:5000`.
-
-<h3>Running with Docker</h3>
-
-1. Ensure Docker is installed.
-2. Run the following command to start the application:
-
-```bash
-docker-compose up
-```
-
-3. Access the app at `http://127.0.0.1:5000`.
-
-To stop the application, use:
-
-```bash
-docker-compose down
-```
-
-<h2 id="features">✨ Features</h2>
-
-- **Simple Unit Conversions**: Convert between various units with ease.
-- **Complex Unit Conversions**: Handle more intricate conversions requiring multiple inputs.
-- **User Session Management**: Unique sessions for every user to keep conversion history separate.
-- **Conversion History**: View, delete, or clear past conversions.
-- **Responsive Design**: Accessible via dynamic HTML templates rendered with Flask.
-
-<h2 id="colab">🤝 Collaborators</h2>
-
-No collaborators yet. Want to contribute? See the [Contribute](#contribute) section below!
-
-<h2 id="contribute">📫 Contribute</h2>
-
-1. Fork the repository.
-2. Create a new branch:
-
-```bash
-git checkout -b feature/your-feature
-```
-
-3. Commit your changes following commit conventions.
-4. Push to the branch:
-
-```bash
-git push origin feature/your-feature
-```
-
-5. Open a Pull Request explaining the problem solved or feature made.
-
-<h3>Helpful Links</h3>
-
-- [📝 How to create a Pull Request](https://www.atlassian.com/br/git/tutorials/making-a-pull-request)
-- [💾 Commit pattern](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
-
+---
