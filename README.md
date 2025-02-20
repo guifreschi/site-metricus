@@ -2,6 +2,8 @@
 
 &#x20;   &#x20;
 
+![python][PYTHON__BADGE] ![flask][FLASK__BADGE] ![javascript][JAVASCRIPT__BADGE] ![css][CSS__BADGE] ![html][HTML__BADGE] ![mysql][MYSQL__BADGE]
+
 <p align="center">
  <a href="#🌍-about-the-project">About</a> •
  <a href="#✨-features">Features</a> •
@@ -147,3 +149,10 @@ These endpoints manage user authentication (login, sign-up).
 - **Railway** - A cloud platform for deploying applications, providing a simple and efficient way to manage infrastructure, deploy updates, and handle database connections.
 
 ---
+
+[PYTHON__BADGE]: https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue
+[JAVASCRIPT__BADGE]: https://img.shields.io/badge/Javascript-000?style=for-the-badge&logo=javascript
+[FLASK__BADGE]: https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white
+[CSS__BADGE]: https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[HTML__BADGE]: https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[MYSQL__BADGE]: https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white
